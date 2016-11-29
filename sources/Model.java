@@ -5,7 +5,7 @@ class Model extends Observable {
     private boolean exist;
 
     public Model(){
-    	this.existe=true;
+    	this.exist=true;
     }
 
     void setExist(boolean exist) {
@@ -18,8 +18,8 @@ class Model extends Observable {
 		return exist;
     }
 
-    public boolean aligned(Table table, boolean black){
-    }
+    /*public boolean aligned(Table table, boolean black){
+    }*/
 
     /** vérifie un alignement de 5 pierres sur le plateau en fonction
     * d'une direction (gauche, droite, haut, bas) et de la position de la pierre
