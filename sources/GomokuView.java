@@ -66,7 +66,8 @@ class GomokuView  extends JFrame implements Observer {
 		for(int i = 0; i < this.support.getWidth(); i++){
             for(int j = 0; j < this.support.getHeight(); j++){
                 //dessine
-                g.drawImage(IIntersection,j*30,i*30+30,this);
+                //g.drawImage(IIntersection,j*30,i*30+30,this);
+            	g.drawLine(i,j,i,j);
             }
         }
     }
