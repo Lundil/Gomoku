@@ -20,7 +20,7 @@ public class Support {
      * récupère le tableau de Stones du plateau
      * @return stone
      */
-    public Stone getStones(int x, int y){
+    public Stone getStone(int x, int y){
         return this.stones[x][y];
     }
     /**
@@ -39,5 +39,8 @@ public class Support {
     }
     public void setStone(int x, int y, boolean black){
     	this.stones[x][y]= new Stone(black,x,y);
+    }
+    public boolean getBlack(){
+        return this.black;
     }
 }
