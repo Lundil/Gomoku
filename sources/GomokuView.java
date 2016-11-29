@@ -25,7 +25,7 @@ class GomokuView  extends JFrame implements Observer {
     }
 
     public void update(Observable o, Object arg) {
-		//plateau.repaint();
+		//support.repaint();
     }
 }
 	
