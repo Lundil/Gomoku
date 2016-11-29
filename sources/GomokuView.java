@@ -46,7 +46,7 @@ class GomokuView  extends JFrame implements Observer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        
 		//Basics
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocation(700,400);
@@ -67,7 +67,7 @@ class GomokuView  extends JFrame implements Observer {
             for(int j = 0; j < this.support.getHeight(); j++){
                 //dessine
                 //g.drawImage(IIntersection,j*30,i*30+30,this);
-            	g.drawLine(i,j,i,j);
+            	g.drawLine(i,j,i+30,j+30);
             }
         }
     }
