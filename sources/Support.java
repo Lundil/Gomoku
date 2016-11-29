@@ -40,7 +40,5 @@ public class Support {
     public void setStone(int x, int y, boolean black){
     	this.stones[x][y]= new Stone(black,x,y);
     }
-    public boolean getBlack(){
-        return this.black;
-    }
+    
 }

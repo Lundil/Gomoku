@@ -13,4 +13,7 @@ public class Stone {
     public int getY(){
         return this.y;
     }
+    public boolean getBlack(){
+        return this.black;
+    }
 }
