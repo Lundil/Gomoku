@@ -5,7 +5,7 @@ class Model extends Observable {
     private boolean exist;
 
     public Model(){
-    	this.existe=true;
+    	this.exist=true;
     }
 
     void setExist(boolean exist) {
@@ -18,11 +18,26 @@ class Model extends Observable {
 		return exist;
     }
 
-    public boolean aligned(Table table, boolean black){
+    public boolean aligned(Support support, boolean black){
+        Stone stone;
+        for(int i = 0; i < support.getWidth(); i++){
+            for(int j = 0; j < support.getHeight(); j++){
+                stone = support.getStone(i, j);
+                if(this.are5(support, stone, Direction.LEFT))
+                    return true;
+                else if(this.are5(support, stone, Direction.RIGHT))
+                    return true;
+                else if(this.are5(support, stone, Direction.UP))
+                    return true;
+                else if(this.are5(support, stone, Direction.DOWN))
+                    return true;
+            }
+        }
+        return false;
     }
 
     /** vérifie un alignement de 5 pierres sur le plateau en fonction
-    * d'une direction (gauche, droite, haut, bas) et de la position de la pierre
+    * d' une direction (gauche, droite, haut, bas) et de la position de la pierre
     * @param support : Support
     * @param stone : Stone
     * @param direction : Direction
