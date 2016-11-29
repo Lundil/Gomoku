@@ -15,11 +15,8 @@ class GomokuView  extends JFrame implements Observer {
 		this.content = new JPanel();
 		
 		model.addObserver(this);
-
-		this.add(reset);
-		this.add()
-		add(lesBoutons, BorderLayout.NORTH);
-		add(ardoise, BorderLayout.CENTER);
+		add(reset, BorderLayout.NORTH);
+		add(content, BorderLayout.CENTER);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocation(200,200);
@@ -28,8 +25,7 @@ class GomokuView  extends JFrame implements Observer {
     }
 
     public void update(Observable o, Object arg) {
-		ardoise.setPossedeDisque(modele.getExiste());
-		ardoise.repaint();
+		//plateau.repaint();
     }
 }
 	
