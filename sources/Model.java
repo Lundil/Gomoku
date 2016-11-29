@@ -4,6 +4,10 @@ import java.util.Observable;
 class Model extends Observable {
     private boolean existe;
 
+    public Model(){
+    	this.existe=true;
+    }
+
     void setExiste(boolean existe) {
 		this.existe = existe;
 		setChanged();
@@ -12,5 +16,6 @@ class Model extends Observable {
 
     boolean getExiste() {
 	return existe;
-    }   
+    }
+    //ajouter pion, alignement
 }
