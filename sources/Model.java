@@ -74,6 +74,4 @@ class Model extends Observable {
     	}
     	return false;
     }
-
->>>>>>> 7459e457a57b8f61961e8e5012ccf6a9ddf1af18
 }
