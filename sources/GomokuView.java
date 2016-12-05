@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.Color;
 import java.awt.BorderLayout;
 import java.awt.event.*;
 import java.util.Observer;
@@ -13,23 +14,15 @@ class GomokuView  extends JFrame implements Observer {
     Model model;
     int counter = 1;
     Support support;
-    Image IIntersection = null;
 
     public GomokuView(Model model) {
     	this.support = new Support(19,19);
 		this.model = model;
 		model.addObserver(this);
-		try {
-			IIntersection = ImageIO.read(getClass().getResource("pictures/wall.png"));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
 		//Basics
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocation(700,400);
-		setSize(720,480);
+        setBounds(700, 400, 600, 600);
 		setTitle("Gomoku Game -- Tour 1");
 		setVisible(true);
     }
@@ -38,14 +31,29 @@ class GomokuView  extends JFrame implements Observer {
 		this.repaint();
     }
 
+
+    public void addController(GomokuController controller){
+        //button.addActionListener(controller);
+    }
+
     public void paint(Graphics g) {
+        g.setColor(new Color(255, 163, 102));
+        g.fillRect(0, 0, 600, 600);
     	counter++;
 		this.setTitle("Gomoku Game -- Tour " + counter);
-		for(int i = 0; i < this.support.getWidth(); i++){
-            for(int j = 0; j < this.support.getHeight(); j++){
-                //dessine
-                //g.drawImage(IIntersection,j*30,i*30+30,this);
-            	g.drawLine(i,j,i,j);
+        Stone stone;
+		for(int i = 0; i < support.getWidth(); i++){
+            for(int j = 0; j < support.getHeight(); j++){
+                stone = support.getStone(i, j);
+                if(stone == null)
+            	   g.fillRect(i*60+10,j*60+10,10,10);
+                else{
+                    if(stone.getBlack())
+                        g.setColor(Color.BLACK);
+                    else
+                        g.setColor(Color.WHITE);
+                   g.fillOval(i*60+10,j*60+10,10,10);
+               }
             }
         }
     }

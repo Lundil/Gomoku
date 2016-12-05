@@ -18,6 +18,11 @@ class Model extends Observable {
 		return exist;
     }
 
+    /** parcourt le plateau pour vérifier l'alignement pour chaque joueur
+    * @param support : Support
+    * @param stone : Stone
+    * @param direction : Direction
+    * @return boolean */
     public boolean aligned(Support support, boolean black){
         Stone stone;
         for(int i = 0; i < support.getWidth(); i++){
