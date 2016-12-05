@@ -19,7 +19,6 @@ class GomokuView  extends JFrame implements Observer {
     	this.support = new Support(19,19);
 		this.model = model;
 		model.addObserver(this);
-
 		//Basics
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
