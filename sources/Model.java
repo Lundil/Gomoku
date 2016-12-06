@@ -69,14 +69,21 @@ class Model extends Observable {
     public boolean addStone(Support support, boolean black, int x, int y){
     	if(!this.free(support, x, y))
     		return false;
-    	for(int i = x - 1; i < x + 2; i ++){
-    		for(int j = y - 1; j < y + 2; j ++){
-    			if(!this.free(support, i, j)){
-    				support.setStone(x, y, black);
-    				return true;
-    			}
-    		}
-    	}
-    	return false;
+        if(support.getNb()% 2 == 0)
+            support.setStone(x, y, true);
+        else{
+            support.setStone(x, y, false);
+        }
+        support.incr();
+        return true;
+    	//for(int i = x - 1; i < x + 2; i ++){
+    		//for(int j = y - 1; j < y + 2; j ++){
+    			//if(!this.free(support, i, j)){
+    	           //support.setStone(x, y, black);
+    	           //return true;
+    			//}
+    		//}
+    	//}
+    	//return false;
     }
 }

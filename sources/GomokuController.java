@@ -21,10 +21,11 @@ class GomokuController implements MouseListener {
     public void mouseExited(MouseEvent e) {}
 
     public void mouseClicked(MouseEvent e) {
-    	int x = e.getX() / 40;
-    	int y = e.getY() / 40;
+    	int x = e.getX()/40;
+    	int y = e.getY()/40;
     	System.out.println("x = " + x + " y = " + y);
     	model.addStone(view.support, true, x, y);
         System.out.println(view.support.toString());
+        this.view.update(model,null);
     }
 }
