@@ -2,7 +2,7 @@ import java.util.Observer;
 import java.util.Observable;
 import java.awt.event.*;
 
-class GomokuController implements ActionListener { 
+class GomokuController implements MouseListener { 
     Model model;
     GomokuView view;
     
@@ -11,7 +11,17 @@ class GomokuController implements ActionListener {
     	this.view = view;
     }
     
-    public void actionPerformed(ActionEvent e) {
-	   
+    public void mousePressed(MouseEvent e) {}
+
+    public void mouseReleased(MouseEvent e) {}
+
+    public void mouseEntered(MouseEvent e) {}
+
+    public void mouseExited(MouseEvent e) {}
+
+    public void mouseClicked(MouseEvent e) {
+    	int x = (e.getX() / 40) - 20;
+    	int y = (e.getY() / 40) - 20;
+    	System.out.println("x = " + x + " y = " + y);
     }
 }

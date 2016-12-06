@@ -8,7 +8,7 @@ public class RunMVC {
             	Model model = new Model();
                 GomokuView view = new GomokuView(model); 
                 GomokuController controller = new GomokuController(model, view);
-                //controller.contol();
+                view.addController(controller);
 		    }
 		});
     }

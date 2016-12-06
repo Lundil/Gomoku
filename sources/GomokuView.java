@@ -33,7 +33,7 @@ class GomokuView  extends JFrame implements Observer {
 
 
     public void addController(GomokuController controller){
-        //button.addActionListener(controller);
+        addMouseListener(controller);
     }
 
     public void paint(Graphics g) {
