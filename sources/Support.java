@@ -1,6 +1,6 @@
 
 public class Support {
-	private int width, height;
+	private int width, height, nb;
 	private Stone[][] stones;
 
 	public Support(int width,int height){
@@ -11,8 +11,18 @@ public class Support {
         }
         this.width = width;
         this.height = height;
+        this.nb=1;
 	}
-
+    public void incr(){
+        this.nb++;
+    }
+    /**
+     * récupère le nombre de tour
+     * @return nb
+     */
+    public int getNb(){
+        return this.nb;
+    }
 	/**
      * récupère le tableau de Stones du plateau
      * @return stones
