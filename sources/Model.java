@@ -66,24 +66,94 @@ class Model extends Observable {
     * @param x : int
     * @param y : int
     * @return boolean */
-    public boolean addStone(Support support, boolean black, int x, int y){
-    	if(!this.free(support, x, y))
-    		return false;
-        if(support.getNb()% 2 == 0)
-            support.setStone(x, y, true);
-        else{
+    public boolean addStone(Support support, int x, int y){
+        if(!this.free(support, x, y))
+            return false;
+        if(support.getNb() == 1){
             support.setStone(x, y, false);
+            return true;
         }
-        support.incr();
-        return true;
-    	//for(int i = x - 1; i < x + 2; i ++){
-    		//for(int j = y - 1; j < y + 2; j ++){
-    			//if(!this.free(support, i, j)){
-    	           //support.setStone(x, y, black);
-    	           //return true;
-    			//}
-    		//}
-    	//}
-    	//return false;
+        if(x==0){
+            //bord gauche
+            for(int i = x; i <= x + 1; i ++){
+                for(int j = y - 1; j <= y + 1; j ++){
+                    if(!this.free(support, i, j)){
+                        //BLACK
+                        if(support.getNb()% 2 == 0)
+                            support.setStone(x, y, true);
+                        else
+                        //WHITE
+                            support.setStone(x, y, false);
+                        return true;
+                    }
+                }
+            }
+            return true;
+        }
+        if(x==support.getWidth()){
+            //bord droit
+            for(int i = x - 1; i <= x; i ++){
+                for(int j = y - 1; j <= y + 1; j ++){
+                    if(!this.free(support, i, j)){
+                        //BLACK
+                        if(support.getNb()% 2 == 0)
+                            support.setStone(x, y, true);
+                        else
+                        //WHITE
+                            support.setStone(x, y, false);
+                        return true;
+                    }
+                }
+            }
+            return true;
+        }
+        if(y==0){
+            //bord haut
+            for(int i = x - 1; i <= x + 1; i ++){
+                for(int j = y; j <= y + 1; j ++){
+                    if(!this.free(support, i, j)){
+                        //BLACK
+                        if(support.getNb()% 2 == 0)
+                            support.setStone(x, y, true);
+                        else
+                        //WHITE
+                            support.setStone(x, y, false);
+                        return true;
+                    }
+                }
+            }
+            return true;
+        }
+        if(y==support.getHeight()){
+            //bord bas
+            for(int i = x - 1; i <= x + 1; i ++){
+                for(int j = y - 1; j <= y; j ++){
+                    if(!this.free(support, i, j)){
+                        //BLACK
+                        if(support.getNb()% 2 == 0)
+                            support.setStone(x, y, true);
+                        else
+                        //WHITE
+                            support.setStone(x, y, false);
+                        return true;
+                    }
+                }
+            }
+            return true;
+        }
+    	for(int i = x - 1; i <= x + 1; i ++){
+        	for(int j = y - 1; j <= y + 1; j ++){
+    			if(!this.free(support, i, j)){
+                    //BLACK
+                    if(support.getNb()% 2 == 0)
+                        support.setStone(x, y, true);
+                    else
+                    //WHITE
+                        support.setStone(x, y, false);
+    	            return true;
+    			}
+    		}
+    	}
+    	return false;
     }
 }
