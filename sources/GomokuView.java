@@ -12,7 +12,6 @@ import java.io.IOException;
 
 class GomokuView  extends JFrame implements Observer {
     Model model;
-    int counter = 1;
     Support support;
 
     public GomokuView(Model model) {
@@ -38,8 +37,7 @@ class GomokuView  extends JFrame implements Observer {
     public void paint(Graphics g) {
         g.setColor(new Color(255, 163, 102));
         g.fillRect(0, 0, getWidth(), getHeight());
-    	counter++;
-		this.setTitle("Gomoku Game -- Tour " + counter);
+		this.setTitle("Gomoku Game -- Tour " + support.getNb());
         Stone stone;
         g.drawRect(20, 20, getWidth()-40, getHeight()-40);
 		for(int i = 0; i < support.getWidth(); i++){
