@@ -53,14 +53,14 @@ public class Support {
         for(int i = 0; i<this.width; i++){
             for(int j = 0; j<this.height; j++){
                 if(getStone(i, j)==null){
-                    chaine+="0";
+                    chaine+="0 ";
                 }
                 else{
                     if(getStone(i, j).getBlack()){
-                        chaine+="2";
+                        chaine+="2 ";
                     }
                     else{
-                        chaine+="1";
+                        chaine+="1 ";
                     }
                 }
             }
