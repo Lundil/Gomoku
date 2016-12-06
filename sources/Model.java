@@ -2,21 +2,6 @@ import java.util.Observer;
 import java.util.Observable;
 
 class Model extends Observable {
-    private boolean exist;
-
-    public Model(){
-    	this.exist=true;
-    }
-
-    void setExist(boolean exist) {
-		this.exist = exist;
-		setChanged();
-		notifyObservers();
-    } 
-
-    boolean getExist() {
-		return exist;
-    }
 
     /** parcourt le plateau pour vérifier l'alignement pour chaque joueur
     * @param support : Support
@@ -75,7 +60,7 @@ class Model extends Observable {
     	return support.getStone(x, y) == null;
     }
 
-    /** ajoute une pierre au plateau
+    /** vérifie la possibilite d'ajouter une pierre au plateau
     * @param support : Support
     * @param black : boolean
     * @param x : int
@@ -85,7 +70,7 @@ class Model extends Observable {
     	if(!this.free(support, x, y))
     		return false;
     	for(int i = x - 1; i < x + 2; i ++){
-    		for(int j = y - 1; y< y + 2; j ++){
+    		for(int j = y - 1; j < y + 2; j ++){
     			if(!this.free(support, i, j)){
     				support.setStone(x, y, black);
     				return true;
