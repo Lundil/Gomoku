@@ -21,7 +21,7 @@ public class Support {
         return this.stones;
     }
     /**
-     * récupère le tableau de Stones du plateau
+     * récupère la Stone de la celulle
      * @return stone
      */
     public Stone getStone(int x, int y){
@@ -44,5 +44,28 @@ public class Support {
     public void setStone(int x, int y, boolean black){
     	this.stones[x][y]= new Stone(black,x,y);
     }
-    
+    /**
+     * 
+     * @return 
+     */
+    public String toString(){
+        String chaine="";
+        for(int i = 0; i<this.width; i++){
+            for(int j = 0; j<this.height; j++){
+                if(getStone(i, j)==null){
+                    chaine+="0";
+                }
+                else{
+                    if(getStone(i, j).getBlack()){
+                        chaine+="2";
+                    }
+                    else{
+                        chaine+="1";
+                    }
+                }
+            }
+            chaine+="\n";
+        }
+        return chaine;
+    }
 }
