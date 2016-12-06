@@ -1,18 +1,15 @@
 import javax.swing.*;
-import java.awt.Color;
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.Observer;
 import java.util.Observable;
-import java.awt.Graphics;
-import java.awt.Image;
-import javax.imageio.ImageIO;
-import java.io.IOException;
+import java.io.*;
 
 
 class InfoView  extends JFrame implements Observer {
     Model model;
-    ImageIcon background;
+    private Image image = null;
+
 
     public InfoView(Model model) {
 		this.model = model;
@@ -20,10 +17,9 @@ class InfoView  extends JFrame implements Observer {
 		//Basics
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        setBounds(100, 200, 200, 200);
+        setBounds(100, 200, 533, 300);
 		setTitle("Informations sur Gomoku");
 		setVisible(true);
-        background = new ImageIcon("../img/fond.jpg");
     }
 
     public void update(Observable o, Object arg) {
@@ -35,7 +31,9 @@ class InfoView  extends JFrame implements Observer {
     }
 
     public void paint(Graphics g) {
-         g.drawImage (background, 0, 0, null);
+        image = getToolkit().getImage("../img/fond01.jpg");
+        if(image != null)
+            g.drawImage(image, 0, 0, this); 
     }
 }
 	

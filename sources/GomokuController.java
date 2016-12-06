@@ -5,10 +5,12 @@ import java.awt.event.*;
 class GomokuController implements MouseListener { 
     Model model;
     GomokuView view;
-    
-    GomokuController(Model model, GomokuView view) {
+    InfoView infoView;
+
+    GomokuController(Model model, GomokuView view, InfoView infoView) {
     	this.model = model;
     	this.view = view;
+    	this.infoView = infoView;
     	view.addMouseListener(this);
     }
     

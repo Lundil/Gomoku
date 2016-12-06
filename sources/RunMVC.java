@@ -6,8 +6,9 @@ public class RunMVC {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
             	Model model = new Model();
-                GomokuView view = new GomokuView(model); 
-                GomokuController controller = new GomokuController(model, view);
+                GomokuView view = new GomokuView(model);
+                InfoView infoView = new InfoView(model);
+                GomokuController controller = new GomokuController(model, view, infoView);
 		    }
 		});
     }
