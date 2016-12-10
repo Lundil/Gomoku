@@ -14,8 +14,8 @@ class GomokuView  extends JFrame implements Observer {
     Model model;
     Support support;
 
-    public GomokuView(Model model) {
-    	this.support = new Support(19,19);
+    public GomokuView(Model model, int width, int heigth,int maxStones) {
+    	this.support = new Support(width, heigth, maxStones);
 		this.model = model;
 		model.addObserver(this);
 		//Basics

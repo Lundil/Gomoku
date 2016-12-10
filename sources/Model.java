@@ -3,43 +3,55 @@ import java.util.Observable;
 
 class Model extends Observable {
 
+    int numberAligned;
+    
+    public Model(int numberAligned){
+        this.numberAligned = numberAligned;
+    }
+
     /** parcourt le plateau pour vérifier l'alignement pour chaque joueur
     * @param support : Support
     * @param stone : Stone
     * @param direction : Direction
     * @return boolean */
-
-    static int stonesBlack = 60;
-    static int stonesWhite = 60;
-
-    public boolean decrement(boolean black){
+    public boolean decrement(Support support, boolean black){
         if(black){
-            if(stonesBlack > 0){
-                stonesBlack--;
+            if(support.getStonesBlack() > 0){
+                support.setStonesBlack(support.getStonesBlack()-1);
                 return true;
             }
         }
         else{
-            if(stonesWhite > 0){
-                stonesWhite--;
+            if(support.getStonesWhite() > 0){
+                support.setStonesWhite(support.getStonesWhite()-1);
                 return true;
             }
         }
         return false;
     }
 
-    public boolean aligned(Support support, boolean black){
+    public boolean aligned(Support support, boolean black, int numberAligned){
         Stone stone;
         for(int i = 0; i < support.getWidth(); i++){
             for(int j = 0; j < support.getHeight(); j++){
                 stone = support.getStone(i, j);
-                if(this.are5OnLine(support, stone, Direction.LEFT))
+                if(this.areOnLine(support, stone, Direction.LEFT, numberAligned))
                     return true;
-                else if(this.are5OnLine(support, stone, Direction.RIGHT))
+                else if(this.areOnLine(support, stone, Direction.RIGHT, numberAligned))
                     return true;
-                else if(this.are5OnLine(support, stone, Direction.UP))
+                else if(this.areOnLine(support, stone, Direction.UP, numberAligned))
                     return true;
-                else if(this.are5OnLine(support, stone, Direction.DOWN))
+                else if(this.areOnLine(support, stone, Direction.DOWN, numberAligned))
+                    return true;
+                else if(this.areOnDiagonal(support, stone, Direction.RIGHTDOWN, numberAligned))
+                    return true;
+                else if(this.areOnDiagonal(support, stone, Direction.RIGHTDOWN, numberAligned))
+                    return true;
+                else if(this.areOnDiagonal(support, stone, Direction.LEFTDOWN, numberAligned))
+                    return true;
+                else if(this.areOnDiagonal(support, stone, Direction.RIGHTUP, numberAligned))
+                    return true;
+                else if(this.areOnDiagonal(support, stone, Direction.LEFTUP, numberAligned))
                     return true;
             }
         }
@@ -52,16 +64,16 @@ class Model extends Observable {
     * @param stone : Stone
     * @param direction : Direction
     * @return boolean */
-	public boolean are5OnLine(Support support, Stone stone, Direction direction){
+	public boolean areOnLine(Support support, Stone stone, Direction direction, int numberAligned){
 		Stone s;
-		for(int cpt = 0; cpt<5; cpt ++){
-			if(direction == Direction.LEFT && stone.getX() - 5 > -1)
+		for(int cpt = 0; cpt < numberAligned; cpt ++){
+			if(direction == Direction.LEFT && stone.getX() - numberAligned > -1)
 				s = support.getStone(stone.getX() - cpt, stone.getY());
-			else if (direction == Direction.RIGHT && stone.getX() + 5 < 19)
+			else if (direction == Direction.RIGHT && stone.getX() + numberAligned < 19)
 				s = support.getStone(stone.getX() + cpt, stone.getY());
-			else if (direction == Direction.UP && stone.getY() - 5 > -1)
+			else if (direction == Direction.UP && stone.getY() - numberAligned > -1)
 				s = support.getStone(stone.getX(), stone.getY() - cpt);
-			else if (direction == Direction.DOWN && stone.getY() + 5 < 19)
+			else if (direction == Direction.DOWN && stone.getY() + numberAligned < 19)
 				s = support.getStone(stone.getX(), stone.getY() + cpt);
 			else
 				return false;
@@ -77,16 +89,16 @@ class Model extends Observable {
     * @param stone : Stone
     * @param direction : Direction
     * @return boolean */
-    public boolean are5OnDiagonal(Support support, Stone stone, Direction direction){
+    public boolean areOnDiagonal(Support support, Stone stone, Direction direction, int numberAligned){
         Stone s;
-        for(int cpt = 0; cpt<5; cpt ++){
-            if(direction == Direction.LEFTUP && stone.getX() - 5 > -1)
+        for(int cpt = 0; cpt < numberAligned; cpt ++){
+            if(direction == Direction.LEFTUP && stone.getX() - numberAligned > -1)
                 s = support.getStone(stone.getX() - cpt, stone.getY());
-            else if (direction == Direction.RIGHT && stone.getX() + 5 < 19)
+            else if (direction == Direction.RIGHT && stone.getX() + numberAligned < 19)
                 s = support.getStone(stone.getX() + cpt, stone.getY());
-            else if (direction == Direction.UP && stone.getY() - 5 > -1)
+            else if (direction == Direction.UP && stone.getY() - numberAligned > -1)
                 s = support.getStone(stone.getX(), stone.getY() - cpt);
-            else if (direction == Direction.DOWN && stone.getY() + 5 < 19)
+            else if (direction == Direction.DOWN && stone.getY() + numberAligned < 19)
                 s = support.getStone(stone.getX(), stone.getY() + cpt);
             else
                 return false;
@@ -145,9 +157,9 @@ class Model extends Observable {
         	for(int j = depY; j <= arrY; j ++){
     			if(!this.free(support, i, j)){
                     //tour du joueur noir
-                    if(support.getNb()% 2 == 0 && decrement(true))
+                    if(support.getNb()% 2 == 0 && decrement(support, true))
                         support.setStone(x, y, true);
-                    else if(support.getNb()% 2 != 0 && decrement(false))
+                    else if(support.getNb()% 2 != 0 && decrement(support, false))
                     //tour du joueur blanc
                         support.setStone(x, y, false);
     	            return true;
