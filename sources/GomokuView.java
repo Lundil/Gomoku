@@ -38,7 +38,7 @@ class GomokuView  extends JFrame implements Observer {
         g.setColor(new Color(255, 163, 102));
         g.fillRect(0, 0, getWidth(), getHeight());
         if(model.getSupport().getNb()% 2 == 0)
-		    this.setTitle("Gomoku Game -- Tour " + model.getSupport().getNb() + "  Joueur 1");
+		    this.setTitle("Gomoku Game -- Tour " + model.getSupport().getNb() + "  Shogun");
         else
             this.setTitle("Gomoku Game -- Tour " + model.getSupport().getNb() + "  Joueur 2");
         Stone stone;
@@ -48,8 +48,8 @@ class GomokuView  extends JFrame implements Observer {
                 //sauf les bords moches
                 if(i != 0 || j != 0){
                     g.setColor(Color.BLACK);
-                    g.drawLine(40*i+20, 60, i*40+20, getHeight()-20);
-                    g.drawLine(20, 40*i+20, getWidth()-20, i*40+20);
+                    g.drawLine(40*i+20, 60, i*40+20, getHeight()-60);
+                    g.drawLine(20, 40*i+20, getWidth()-60, i*40+20);
                 }
             }
         }

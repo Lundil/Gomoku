@@ -29,6 +29,6 @@ class GomokuController implements MouseListener {
     	if(model.addStone(model.getSupport(), x, y))
             model.getSupport().incr();
         System.out.println(model.getSupport().toString());
-        this.view.update(model,null);
+        this.view.update(model, null);
     }
 }

@@ -40,16 +40,16 @@ public class Support {
         return this.stonesWhite;
     }
 	/**
-     * récupère le tableau de pierres du plateau
-     * @return stones
-     */
+    * récupère le tableau de pierres du plateau
+    * @return stones
+    */
     public Stone[][] getStones(){
         return this.stones;
     }
     /**
-     * récupère la pierre de la celulle
-     * @return stone
-     */
+    * récupère la pierre de la celulle
+    * @return stone
+    */
     public Stone getStone(int x, int y){
         return this.stones[x][y];
     }
@@ -68,7 +68,8 @@ public class Support {
         return this.height;
     }
     /* modifie le nombre de pierres noires restantes
-    * @param i : int */
+    * @param i : int
+    */
     public void setStonesBlack(int i){
         this.stonesBlack = i;
     }
@@ -80,9 +81,10 @@ public class Support {
     /* modifie le plateau
     * @param x : int
     * @param y : int
-    * @param boolean : black */
+    * @param boolean : black
+    */
     public void setStone(int x, int y, boolean black){
-    	this.stones[x][y]= new Stone(black,x,y);
+    	this.stones[x][y] = new Stone(black, x, y);
     }
     /**
     * version texte du plateau
@@ -90,8 +92,8 @@ public class Support {
     */
     public String toString(){
         String chaine = "";
-        for(int i = 0; i < this.width; i++){
-            for(int j = 0; j < this.height; j++){
+        for(int i = 0; i < this.height; i++){
+            for(int j = 0; j < this.width; j++){
                 if(getStone(i, j) == null)
                     chaine += "0 ";
                 else{

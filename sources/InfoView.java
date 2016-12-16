@@ -25,7 +25,6 @@ class InfoView  extends JFrame implements Observer {
 		this.repaint();
     }
 
-
     public void addController(GomokuController controller){
     }
 
@@ -35,9 +34,8 @@ class InfoView  extends JFrame implements Observer {
             g.drawImage(image, 0, 0, this);
 
         if(model.endGame(model.getSupport()) == 1)
-            g.drawString("avènement du Shogun", 100, 200);
+            g.drawString("Avènement du Shogun", 100, 200);
         else if(model.endGame(model.getSupport()) == 2)
             g.drawString("Naruto remporte cette bataille", 100, 200);
     }
 }
-	

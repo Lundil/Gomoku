@@ -30,8 +30,7 @@ class Model extends Observable {
                 support.setStonesBlack(support.getStonesBlack()-1);
                 return true;
             }
-        }
-        else{
+        } else{
             if(support.getStonesWhite() > 0){
                 support.setStonesWhite(support.getStonesWhite()-1);
                 return true;
@@ -173,7 +172,7 @@ class Model extends Observable {
         if(y==support.getHeight())
             arrY = y;
         //traitement
-    	for(int i = depX - 1; i <= arrX; i ++){
+    	for(int i = depX; i <= arrX; i ++){
         	for(int j = depY; j <= arrY; j ++){
     			if(!this.free(support, i, j)){
                     //tour du joueur noir
