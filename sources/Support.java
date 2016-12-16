@@ -13,10 +13,10 @@ public class Support {
         stonesBlack = maxStones;
         this.width = width;
         this.height = height;
-        this.nb=1;
+        this.nb = 1;
 	}
     public void incr(){
-        this.nb++;
+        this.nb ++;
     }
     /**
     * récupère le nombre de tour
@@ -47,7 +47,7 @@ public class Support {
         return this.stones;
     }
     /**
-     * récupère la Stone de la celulle
+     * récupère la pierre de la celulle
      * @return stone
      */
     public Stone getStone(int x, int y){

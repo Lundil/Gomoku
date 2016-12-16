@@ -27,9 +27,9 @@ class GomokuController implements MouseListener {
     	int y = e.getY()/40;
     	System.out.println("x = " + x + " y = " + y);
 
-    	if(model.addStone(view.support, x, y))
-            view.support.incr();
-        System.out.println(view.support.toString());
+    	if(model.addStone(model.getSupport(), x, y))
+            model.getSupport().incr();
+        System.out.println(model.getSupport().toString());
         this.view.update(model,null);
     }
 }

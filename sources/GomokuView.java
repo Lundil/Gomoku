@@ -12,10 +12,9 @@ import java.io.IOException;
 
 class GomokuView  extends JFrame implements Observer {
     Model model;
-    Support support;
+    private Image image = null;
 
-    public GomokuView(Model model, int width, int heigth,int maxStones) {
-    	this.support = new Support(width, heigth, maxStones);
+    public GomokuView(Model model) {
 		this.model = model;
 		model.addObserver(this);
 		//Basics
@@ -35,22 +34,23 @@ class GomokuView  extends JFrame implements Observer {
     }
 
     public void paint(Graphics g) {
+
         g.setColor(new Color(255, 163, 102));
         g.fillRect(0, 0, getWidth(), getHeight());
-        if(support.getNb()% 2 == 0)
-		    this.setTitle("Gomoku Game -- Tour " + support.getNb() + "  Joueur 1");
+        if(model.getSupport().getNb()% 2 == 0)
+		    this.setTitle("Gomoku Game -- Tour " + model.getSupport().getNb() + "  Joueur 1");
         else
-            this.setTitle("Gomoku Game -- Tour " + support.getNb() + "  Joueur 2");
+            this.setTitle("Gomoku Game -- Tour " + model.getSupport().getNb() + "  Joueur 2");
         Stone stone;
         g.drawRect(20, 20, getWidth()-40, getHeight()-40);
-		for(int i = 0; i < support.getWidth(); i++){
-            for(int j = 0; j < support.getHeight(); j++){
+		for(int i = 0; i < model.getSupport().getWidth(); i++){
+            for(int j = 0; j < model.getSupport().getHeight(); j++){
                 //sauf les bords moches
                 if(i!=0 || j!=0){
                     g.setColor(Color.BLACK);
                     g.drawLine(40*i+20, 60, i*40+20, getHeight()-20);
                     g.drawLine(20, 40*i+20, getWidth()-20, i*40+20);
-                    stone = support.getStone(i, j);
+                    stone = model.getSupport().getStone(i, j);
 
                     if(stone != null){
                         if(stone.getBlack())

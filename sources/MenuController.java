@@ -16,8 +16,8 @@ class MenuController implements ActionListener {
         if(st.equals("2 joueurs")){
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    Model model = new Model(5);
-                    GomokuView view = new GomokuView(model, 19, 19, 60);
+                    Model model = new Model(19, 19, 60, 5);
+                    GomokuView view = new GomokuView(model);
                     InfoView infoView = new InfoView(model);
                     GomokuController controller = new GomokuController(model, view, infoView);
                 }
@@ -26,8 +26,8 @@ class MenuController implements ActionListener {
         else if(st.equals("jouer contre l'IA")){
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    Model model = new Model(5);
-                    GomokuView view = new GomokuView(model, 19, 19, 60);
+                    Model model = new Model(19, 19, 60, 5);
+                    GomokuView view = new GomokuView(model);
                     InfoView infoView = new InfoView(model);
                     GomokuController controller = new GomokuController(model, view, infoView);
                 }
@@ -36,8 +36,8 @@ class MenuController implements ActionListener {
         else if(st.equals("Version Morpion")){
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    Model model = new Model(3);
-                    GomokuView view = new GomokuView(model, 3, 3, 4);
+                    Model model = new Model( 3, 3, 4, 3);
+                    GomokuView view = new GomokuView(model);
                     InfoView infoView = new InfoView(model);
                     GomokuController controller = new GomokuController(model, view, infoView);
                 }
@@ -46,8 +46,8 @@ class MenuController implements ActionListener {
         if(st.equals("Version Puissance 4")){
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    Model model = new Model(4);
-                    GomokuView view = new GomokuView(model, 6, 6, 6);
+                    Model model = new Model(6, 6, 6, 4);
+                    GomokuView view = new GomokuView(model);
                     InfoView infoView = new InfoView(model);
                     GomokuController controller = new GomokuController(model, view, infoView);
                 }
