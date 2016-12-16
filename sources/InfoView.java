@@ -36,6 +36,6 @@ class InfoView  extends JFrame implements Observer {
         if(model.endGame(model.getSupport()) == 1)
             g.drawString("Avènement du Shogun", 100, 200);
         else if(model.endGame(model.getSupport()) == 2)
-            g.drawString("Naruto remporte cette bataille", 100, 200);
+            g.drawString("Renversement des Yakuzas", 100, 200);
     }
 }

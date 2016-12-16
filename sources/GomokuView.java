@@ -40,7 +40,7 @@ class GomokuView  extends JFrame implements Observer {
         if(model.getSupport().getNb()% 2 == 0)
 		    this.setTitle("Gomoku Game -- Tour " + model.getSupport().getNb() + "  Shogun");
         else
-            this.setTitle("Gomoku Game -- Tour " + model.getSupport().getNb() + "  Joueur 2");
+            this.setTitle("Gomoku Game -- Tour " + model.getSupport().getNb() + "  Yakuza");
         Stone stone;
         g.drawRect(20, 60, getWidth()-20, getHeight()-20);
 		for(int i = 0; i < model.getSupport().getWidth(); i++){

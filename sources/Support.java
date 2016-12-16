@@ -92,8 +92,8 @@ public class Support {
     */
     public String toString(){
         String chaine = "";
-        for(int i = 0; i < this.height; i++){
-            for(int j = 0; j < this.width; j++){
+        for(int i = 0; i < this.width; i++){
+            for(int j = 0; j < this.height; j++){
                 if(getStone(i, j) == null)
                     chaine += "0 ";
                 else{
