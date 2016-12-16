@@ -46,22 +46,26 @@ class GomokuView  extends JFrame implements Observer {
 		for(int i = 0; i < model.getSupport().getWidth(); i++){
             for(int j = 0; j < model.getSupport().getHeight(); j++){
                 //sauf les bords moches
-                if(i!=0 || j!=0){
+                if(i != 0 || j != 0){
                     g.setColor(Color.BLACK);
                     g.drawLine(40*i+20, 60, i*40+20, getHeight()-20);
                     g.drawLine(20, 40*i+20, getWidth()-20, i*40+20);
-                    stone = model.getSupport().getStone(i, j);
+                }
+            }
+        }
+        for(int i = 0; i < model.getSupport().getWidth(); i++){
+            for(int j = 0; j < model.getSupport().getHeight(); j++){
 
-                    if(stone != null){
-                        if(stone.getBlack())
-                            g.setColor(Color.BLACK);
-                        else
-                            g.setColor(Color.WHITE);
-                       g.fillOval(40*i+1,40*j+40,38,38);
-                   }
-               }
+                stone = model.getSupport().getStone(i, j);
+                if(stone != null){
+                    if(stone.getBlack())
+                        g.setColor(Color.BLACK);
+                    else
+                        g.setColor(Color.WHITE);
+                    // 1 = 20-38/2 et 40 = 60-38/2
+                    g.fillOval(40*i+1, 40*j+40, 38, 38);
+                }
             }
         }
     }
 }
-	

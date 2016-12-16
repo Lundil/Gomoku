@@ -14,7 +14,6 @@ class InfoView  extends JFrame implements Observer {
     public InfoView(Model model) {
 		this.model = model;
 		model.addObserver(this);
-		//Basics
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setBounds(100, 200, 533, 300);

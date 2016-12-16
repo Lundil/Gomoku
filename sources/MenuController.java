@@ -27,9 +27,9 @@ class MenuController implements ActionListener {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     Model model = new Model(19, 19, 60, 5);
-                    GomokuView view = new GomokuView(model);
+                    GomokuView gomokuView = new GomokuView(model);
                     InfoView infoView = new InfoView(model);
-                    GomokuController controller = new GomokuController(model, view, infoView);
+                    GomokuController controller = new GomokuController(model, gomokuView, infoView);
                 }
             });
         }
@@ -37,9 +37,9 @@ class MenuController implements ActionListener {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     Model model = new Model( 3, 3, 4, 3);
-                    GomokuView view = new GomokuView(model);
+                    GomokuView gomokuView = new GomokuView(model);
                     InfoView infoView = new InfoView(model);
-                    GomokuController controller = new GomokuController(model, view, infoView);
+                    GomokuController controller = new GomokuController(model, gomokuView, infoView);
                 }
             });
         }
@@ -47,9 +47,9 @@ class MenuController implements ActionListener {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     Model model = new Model(6, 6, 6, 4);
-                    GomokuView view = new GomokuView(model);
+                    GomokuView gomokuView = new GomokuView(model);
                     InfoView infoView = new InfoView(model);
-                    GomokuController controller = new GomokuController(model, view, infoView);
+                    GomokuController controller = new GomokuController(model, gomokuView, infoView);
                 }
             });
         }
