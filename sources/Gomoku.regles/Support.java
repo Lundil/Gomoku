@@ -6,6 +6,11 @@ public class Support {
 	private int width, height, nb, stonesBlack, stonesWhite;
 	private int[][] stones;
 
+    /** construit un plateua de jeu en fonction du nombre de lignes et de  colonnes
+    * et du nombre total de pierres autorisées sur le plateau pour chaque joueur
+    * @param width : int
+    * @param height : int
+    * @param maxStones : int */
 	public Support(int width, int height, int maxStones){
 		this.stones = new int[width][height];
         for(int i = 0; i<width; i++){
@@ -18,6 +23,10 @@ public class Support {
         this.height = height;
         this.nb = 1;
 	}
+
+    /**
+    * augmente le nombre de tours effectués
+    */
     public void incr(){
         this.nb ++;
     }
