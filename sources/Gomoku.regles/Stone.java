@@ -1,3 +1,5 @@
+package Gomoku.regles;
+
 public class Stone {
 	private boolean black ;
 	private int x,y;
@@ -13,7 +15,10 @@ public class Stone {
     public int getY(){
         return this.y;
     }
-    public boolean getBlack(){
-        return this.black;
+    public int getBlack(){
+        if(black)
+        	return 1;
+        else
+        	return 2;
     }
 }

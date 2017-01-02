@@ -1,13 +1,16 @@
+package Gomoku.regles;
+import Gomoku.jeu.*;
+import Gomoku.gui.*;
 
 public class Support {
 	private int width, height, nb, stonesBlack, stonesWhite;
-	private Stone[][] stones;
+	private int[][] stones;
 
 	public Support(int width, int height, int maxStones){
-		this.stones = new Stone[width][height];
+		this.stones = new int[width][height];
         for(int i = 0; i<width; i++){
             for(int j = 0; j<height; j++)
-                this.stones[i][j] = null;
+                this.stones[i][j] = 0;
         }
         stonesWhite = maxStones;
         stonesBlack = maxStones;
@@ -43,16 +46,17 @@ public class Support {
     * récupère le tableau de pierres du plateau
     * @return stones
     */
-    public Stone[][] getStones(){
+    public int[][] getStones(){
         return this.stones;
     }
     /**
     * récupère la pierre de la celulle
     * @return stone
     */
-    public Stone getStone(int x, int y){
+    public int getStone(int x, int y){
         return this.stones[x][y];
     }
+
     /**
     * récupère la largeur du support
     * @return width
@@ -84,7 +88,10 @@ public class Support {
     * @param boolean : black
     */
     public void setStone(int x, int y, boolean black){
-    	this.stones[x][y] = new Stone(black, x, y);
+        if(black)
+    	   this.stones[x][y] = 1;
+        else
+            this.stones[x][y] = 2;
     }
     /**
     * version texte du plateau
@@ -93,16 +100,8 @@ public class Support {
     public String toString(){
         String chaine = "";
         for(int i = 0; i < this.width; i++){
-            for(int j = 0; j < this.height; j++){
-                if(getStone(i, j) == null)
-                    chaine += "0 ";
-                else{
-                    if(getStone(i, j).getBlack())
-                        chaine += "2 ";
-                    else
-                        chaine += "1 ";
-                }
-            }
+            for(int j = 0; j < this.height; j++)
+                chaine += getStone(i, j) + " ";
             chaine += "\n";
         }
         return chaine;

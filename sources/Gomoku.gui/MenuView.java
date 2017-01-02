@@ -1,3 +1,7 @@
+package Gomoku.gui;
+import Gomoku.jeu.*;
+import Gomoku.regles.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -6,7 +10,7 @@ import java.util.Observable;
 import java.io.*;
 
 
-class MenuView  extends JFrame implements Observer {
+public class MenuView  extends JFrame implements Observer {
     private JButton gomoku, gomokuIA, morpion, puissance;
 
     public MenuView() {

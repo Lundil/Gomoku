@@ -1,3 +1,5 @@
+package Gomoku.regles;
+
 public enum Direction{
 	LEFT, RIGHT, UP, DOWN, LEFTUP, LEFTDOWN, RIGHTUP, RIGHTDOWN;
 }
