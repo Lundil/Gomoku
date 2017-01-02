@@ -28,6 +28,10 @@ public class InfoView  extends JFrame implements Observer {
         cancel.setBounds( 40, 30, 160, 50);
     }
 
+    /** mets à jour l'affichage en fonction du modèle donné
+    * @param o : Observable
+    * @param arg : Object
+    */
     public void update(Observable o, Object arg) {
 		this.repaint();
     }
@@ -35,6 +39,10 @@ public class InfoView  extends JFrame implements Observer {
     public void addController(GameController controller){
     }
 
+
+    /** Affiche la vue du plateau de jeu à chaque saisie du joueur
+    * @param g : Graphics
+    */
     public void paint(Graphics g) {
         image = getToolkit().getImage("../img/fond01.jpg");
         if(image != null)

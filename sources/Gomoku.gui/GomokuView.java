@@ -19,13 +19,17 @@ public class GomokuView extends View {
         super(model);
     }
 
+
+    /** Affiche la vue du plateau de jeu à chaque saisie du joueur
+    * @param g : Graphics
+    */
     public void paint(Graphics g) {
 
         g.setColor(new Color(255, 163, 102));
         g.fillRect(0, 0, getWidth(), getHeight());
 		
         this.setTitle("Gomoku");
-        
+
         Stone stone;
         g.drawRect(20, 60, getWidth()-20, getHeight()-20);
 		for(int i = 0; i < super.model.getSupport().getWidth(); i++){

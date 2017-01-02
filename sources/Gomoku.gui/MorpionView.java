@@ -19,6 +19,9 @@ public class MorpionView extends View {
         super(model);
     }
 
+    /** Affiche la vue du plateau de jeu à chaque saisie du joueur
+    * @param g : Graphics
+    */
     public void paint(Graphics g) {
         super.setTitle("Version Morpion");
         g.setColor(new Color(255, 163, 102));

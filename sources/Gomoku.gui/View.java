@@ -27,9 +27,14 @@ public class View extends JFrame implements Observer {
 		setVisible(true);
     }
 
+    /** mets à jour l'affichage en fonction du modèle donné
+    * @param o : Observable
+    * @param arg : Object
+    */
     public void update(Observable o, Object arg) {
 		this.repaint();
     }
+
 
     public void addController(GameController controller){
     }

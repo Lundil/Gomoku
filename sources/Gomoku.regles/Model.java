@@ -47,6 +47,9 @@ public class Model extends Observable {
         return -1;
     }
 
+    /** soustrait une pierre à la somme restante, retourne faux si la somme est à 0
+    * @param black : boolean
+    * @return boolean */
     public boolean decrement(boolean black){
         if(black){
             if(support.getStonesBlack() > 0){
