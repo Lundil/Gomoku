@@ -17,6 +17,8 @@ public class View extends JFrame implements Observer {
     Model model;
     private Image image = null;
 
+    /** consturit la vue originale du jeu quelque soit sa version selon le modèle
+    * @param model : Model */
     public View(Model model) {
 		this.model = model;
 		model.addObserver(this);

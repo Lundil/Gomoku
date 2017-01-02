@@ -12,6 +12,10 @@ public class GameController implements MouseListener {
     InfoView infoView;
     int result = -1;
 
+    /** construit le listener du jeu sélectionné et gère son affichage
+    * @param model: Model
+    * @param view : View
+    * @param infoView : InfoView */
     GameController(Model model, View view, InfoView infoView) {
     	this.model = model;
     	this.view = view;

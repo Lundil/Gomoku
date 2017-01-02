@@ -10,6 +10,13 @@ public class Model extends Observable {
     private Support lastVersion;
     private int numberAligned;
     
+    /** construit un modèle sur lequel se base les règles du jeu
+    * il prend en compte les paramètres du plateau (cf Support)
+    * et le nombre de pierres à aligner pour gagner
+    * @param width : int
+    * @param height : int
+    * @param maxStones : int
+    * @param numberAligned : int */
     public Model(int width, int heigth, int maxStones, int numberAligned){
         this.support = new Support(width, heigth, maxStones);
         this.lastVersion = this.support;
