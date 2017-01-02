@@ -24,7 +24,6 @@ public class View extends JFrame implements Observer {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setBounds(600, 300, 800, 800);
-		setTitle("Game -- Tour 1");
 		setVisible(true);
     }
 

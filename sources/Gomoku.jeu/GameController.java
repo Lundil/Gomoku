@@ -10,6 +10,7 @@ public class GameController implements MouseListener {
     Model model;
     View view;
     InfoView infoView;
+    int result = -1;
 
     GameController(Model model, View view, InfoView infoView) {
     	this.model = model;
@@ -66,14 +67,17 @@ public class GameController implements MouseListener {
         }
         System.out.println("x = " + x + " y = " + y);
         if(x != -1 && y != -1){
-            model.setLastVersion(model.getSupport());
-        	if(model.addStone(x, y))
-                model.getSupport().incr();
-            System.out.println(model.getSupport().toString());
-            this.view.update(model, null);
-            this.infoView.update(model, null);
-            int result = model.endGame();
-            System.out.println("état de la partie = " + result);
+            if(result == -1){
+                model.setLastVersion(model.getSupport());
+            	if(model.addStone(x, y))
+                    model.getSupport().incr();
+                System.out.println(model.getSupport().toString());
+                result = model.endGame();
+                this.view.update(model, null);
+                this.infoView.update(model, null);
+                System.out.println("état de la partie = " + result);
+                System.out.println("nombre de pierres restantes : blanc = " + model.getSupport().getStonesWhite() + " noir = " + model.getSupport().getStonesBlack());
+            }
         }
     }
 }

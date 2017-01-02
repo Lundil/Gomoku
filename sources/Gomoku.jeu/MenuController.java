@@ -50,7 +50,7 @@ public class MenuController implements ActionListener {
         if(st.equals("Version Puissance 4")){
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    Model model = new Model(6, 6, 6, 4);
+                    Model model = new Model(6, 6, 10, 4);
                     GomokuView gomokuView = new GomokuView(model);
                     InfoView infoView = new InfoView(model);
                     GameController controller = new GameController(model, gomokuView, infoView);

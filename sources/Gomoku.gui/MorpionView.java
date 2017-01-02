@@ -20,13 +20,9 @@ public class MorpionView extends View {
     }
 
     public void paint(Graphics g) {
-
+        super.setTitle("Version Morpion");
         g.setColor(new Color(255, 163, 102));
         g.fillRect(0, 0, getWidth(), getHeight());
-        if(super.model.getSupport().getNb()% 2 == 0)
-		    this.setTitle("Game -- Tour " + super.model.getSupport().getNb() + "  Shogun");
-        else
-            this.setTitle("Game -- Tour " + super.model.getSupport().getNb() + "  Yakuza");
         Stone stone;
         g.setColor(Color.BLACK);
         g.drawRect(20, 60, getWidth()-40, getHeight()-120);

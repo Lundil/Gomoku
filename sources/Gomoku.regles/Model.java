@@ -17,7 +17,7 @@ public class Model extends Observable {
     }
 
     /** retourne un nombre pour savoir si le joueur noir a gagné (1),
-    * si le joueur blanc a gagné (2), sinon 0
+    * si le joueur blanc a gagné (2), si la partie est nulle (0), sinon -1
     * @param support : Support
     * @return int */
     public int endGame(){
@@ -28,22 +28,25 @@ public class Model extends Observable {
             //victoire des blancs
             else if(alignedGomoku(false) || support.getStonesBlack() == 0)
                 return 2;
+            //partie nulle
+            if(support.getStonesBlack() == 0 && support.getStonesWhite() == 0)
+                return 0;
         }
         else if(this.numberAligned == 3){
             //victoire des noirs
-            if(alignedMorpion(true) || support.getStonesWhite() == 0)
+            if(alignedMorpion(true))
                 return 1;
             //victoire des blancs
-            else if(alignedMorpion(false) || support.getStonesBlack() == 0)
+            else if(alignedMorpion(false))
                 return 2;
+            //partie nulle
+            if((!alignedMorpion(false) && support.getStonesWhite() == 0) || (!alignedMorpion(true) && support.getStonesBlack() == 0))
+                return 0;
         }
-        //partie nulle
-        if(support.getStonesBlack() == 0 && support.getStonesWhite() == 0)
-            return 0;
+        
         //continuité du jeu
         return -1;
     }
-
 
     public boolean decrement(boolean black){
         if(black){
@@ -60,8 +63,7 @@ public class Model extends Observable {
         return false;
     }
 
-    /** parcourt le plateau pour vérifier l'alignement pour chaque joueur
-    * @param support : Support
+    /** parcourt le plateau pour vérifier l'alignement pour chaque joueur version Gomoku
     * @param black : boolean
     * @return boolean */
     public boolean alignedGomoku(boolean black){
@@ -93,10 +95,11 @@ public class Model extends Observable {
         return false;
     }
 
-    /** vérifie un alignement de 5 pierres en ligne sur le plateau en fonction
-    * d' une direction (gauche, droite, haut, bas) et de la position de la pierre
-    * @param support : Support
-    * @param stone : Stone
+    /** vérifie un alignement de 5 pierres en ligne sur le plateau en fonction 
+    * d' une direction (gauche, droite, haut, bas) et de la position de la pierre version Gomoku
+    * @param color : int
+    * @param x : int
+    * @param y : int
     * @param direction : Direction
     * @return boolean */
 	public boolean areOnLineGomoku(int color, int x, int y, Direction direction){
@@ -127,11 +130,15 @@ public class Model extends Observable {
                     result = 0;
             }
         }
-        return result == 4;
+        System.out.println("nombre pierres alignées = " + result);
+        return result == 5;
 	}
 
-    /** vérifie un alignement de 5 pierres en diagonale sur le plateau Gomoku
-    * @param stone : Stone
+    /** vérifie un alignement de 5 pierres en diagonale sur le plateau en fonction 
+    * d' une direction (gauche, droite, haut, bas) et de la position de la pierre version Gomoku
+    * @param color : int
+    * @param x : int
+    * @param y : int
     * @param direction : Direction
     * @return boolean */
     public boolean areOnDiagonalGomoku(int color, int x, int y, Direction direction){
@@ -162,9 +169,13 @@ public class Model extends Observable {
                     result = 0;
             }
         }
-        return result == 4;
+        System.out.println("nombre pierres alignées = " + result);
+        return result == 5;
     }
 
+    /** parcourt le plateau pour vérifier l'alignement pour chaque joueur version Morpion
+    * @param black : boolean
+    * @return boolean */
     public boolean alignedMorpion(boolean black){
         if(black){
             if(areOnLineMorpion(1) || areOnDiagonalMorpion(1))
@@ -178,6 +189,13 @@ public class Model extends Observable {
         }
     }
 
+    /** vérifie un alignement de 5 pierres en ligne sur le plateau en fonction 
+    * d' une direction (gauche, droite, haut, bas) et de la position de la pierre version Morpion
+    * @param color : int
+    * @param x : int
+    * @param y : int
+    * @param direction : Direction
+    * @return boolean */
     public boolean areOnLineMorpion(int color){
         if(support.getStone(0, 0) == support.getStone(0, 1) && support.getStone(0, 1) == support.getStone(0, 2) && support.getStone(0, 2) == color)
             return true;
@@ -194,6 +212,13 @@ public class Model extends Observable {
         return false;
     }
 
+    /** vérifie un alignement de 5 pierres en diagonale sur le plateau en fonction 
+    * d' une direction (gauche, droite, haut, bas) et de la position de la pierre version Morpion
+    * @param color : int
+    * @param x : int
+    * @param y : int
+    * @param direction : Direction
+    * @return boolean */
     public boolean areOnDiagonalMorpion(int color){
         if(support.getStone(1, 1) == color){
             if(color == support.getStone(0, 0) && color == support.getStone(2, 2))
@@ -205,7 +230,6 @@ public class Model extends Observable {
     }
 
     /** vérifie que la case aux coordonnées x et y du plateau est vide
-    * @param support : Support
     * @param x : int
     * @param y : int
     * @return boolean */
@@ -216,8 +240,6 @@ public class Model extends Observable {
     /** vérifie la possibilite d'ajouter une pierre au plateau
     * selon s'il y a des pierres à proximité
     * et le nombre de pierres restant au joueur
-    * @param support : Support
-    * @param black : boolean
     * @param x : int
     * @param y : int
     * @return boolean */
@@ -228,6 +250,7 @@ public class Model extends Observable {
         //au premier tour
         if(support.getNb() == 1){
             support.setStone(x, y, false);
+            decrement(false);
             return true;
         }
         if(numberAligned == 5){
@@ -295,14 +318,27 @@ public class Model extends Observable {
         return this.lastVersion;
     }
 
+    /**
+     * récupère le nombre de pierres à aligner pour gagner
+     * @return int
+     */
     public int getNumberAligned(){
         return this.numberAligned;
     }
 
+    /**
+     * modifie la dernière version du plateau de jeu
+     * @param support : Support
+     */
     public void setLastVersion(Support support){
         this.lastVersion = support;
     }
 
+
+    /**
+     * modifie la version courante du plateau de jeu
+     * @param support : Support
+     */
     public void setSupport(Support support){
         this.support = support;
     }

@@ -23,10 +23,9 @@ public class GomokuView extends View {
 
         g.setColor(new Color(255, 163, 102));
         g.fillRect(0, 0, getWidth(), getHeight());
-        if(super.model.getSupport().getNb()% 2 == 0)
-		    this.setTitle("Gomoku Game -- Tour " + super.model.getSupport().getNb() + "  Shogun");
-        else
-            this.setTitle("Gomoku Game -- Tour " + super.model.getSupport().getNb() + "  Yakuza");
+		
+        this.setTitle("Gomoku");
+        
         Stone stone;
         g.drawRect(20, 60, getWidth()-20, getHeight()-20);
 		for(int i = 0; i < super.model.getSupport().getWidth(); i++){

@@ -39,6 +39,12 @@ public class InfoView  extends JFrame implements Observer {
         image = getToolkit().getImage("../img/fond01.jpg");
         if(image != null)
             g.drawImage(image, 0, 0, this);
+
+        if(model.getSupport().getNb()% 2 == 0 && model.endGame() == -1)
+            g.drawString("Tour " + model.getSupport().getNb() + "  Shogun", 70, 100);
+        else if(model.getSupport().getNb()% 2 != 0 && model.endGame() == -1)
+            g.drawString("Tour " + model.getSupport().getNb() + "  Yakuza", 70, 100);
+
         if(model.getSupport().getNb() == 1 || model.endGame() == -1)
             g.drawString("Affrontement en cours ...", 100, 200);
         else{
@@ -47,8 +53,7 @@ public class InfoView  extends JFrame implements Observer {
             else if(model.endGame() == 2)
                 g.drawString("Renversement des Yakuzas", 100, 200);
             else if(model.endGame() == 0)
-                g.drawString("Aucun camp ne remporte la victoire", 100, 200);
+                g.drawString("Aucune faction ne remporte la victoire", 60, 200);
         }
-
     }
 }
