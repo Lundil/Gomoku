@@ -18,15 +18,14 @@ public class Model extends Observable {
 
     /** retourne un nombre pour savoir si le joueur noir a gagné (1),
     * si le joueur blanc a gagné (2), si la partie est nulle (0), sinon -1
-    * @param support : Support
     * @return int */
     public int endGame(){
         if(this.numberAligned == 5){
             //victoire des noirs
-            if(alignedGomoku(true) || support.getStonesWhite() == 0)
+            if(alignedGomoku(true))
                 return 1;
             //victoire des blancs
-            else if(alignedGomoku(false) || support.getStonesBlack() == 0)
+            else if(alignedGomoku(false))
                 return 2;
             //partie nulle
             if(support.getStonesBlack() == 0 && support.getStonesWhite() == 0)
@@ -71,6 +70,10 @@ public class Model extends Observable {
             for(int y = 0; y < support.getHeight(); y ++){
                 int color = support.getStone(x, y);
                 if(color != 0){
+                    if(black)
+                        color = 1;
+                    else
+                        color = 2;
                     if(this.areOnLineGomoku(color, x, y, Direction.LEFT))
                         return true;
                     else if(this.areOnLineGomoku(color, x, y, Direction.RIGHT))
@@ -333,7 +336,6 @@ public class Model extends Observable {
     public void setLastVersion(Support support){
         this.lastVersion = support;
     }
-
 
     /**
      * modifie la version courante du plateau de jeu
