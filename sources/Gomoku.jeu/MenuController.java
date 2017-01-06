@@ -23,7 +23,7 @@ public class MenuController implements ActionListener {
         if(st.equals("2 joueurs")){
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    Model model = new Model(19, 19, 60, 5);
+                    ModelGomoku model = new ModelGomoku(19, 19, 60, 5);
                     GomokuView view = new GomokuView(model);
                     InfoView infoView = new InfoView(model);
                     GameController controller = new GameController(model, view, infoView);
@@ -36,14 +36,16 @@ public class MenuController implements ActionListener {
                     Model model = new Model(19, 19, 60, 5);
                     GomokuView gomokuView = new GomokuView(model);
                     InfoView infoView = new InfoView(model);
-                    GameController controller = new GameController(model, gomokuView, infoView);
+                    IAGomoku ia = new IAGomoku();
+                    System.out.println("IA créée");
+                    GameController controller = new GameController(model, gomokuView, infoView, ia);
                 }
             });
         }
         else if(st.equals("Version Morpion")){
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    Model model = new Model( 3, 3, 5, 3);
+                    ModelMorpion model = new ModelMorpion( 3, 3, 5, 3);
                     MorpionView morpionView = new MorpionView(model);
                     InfoView infoView = new InfoView(model);
                     GameController controller = new GameController(model, morpionView, infoView);

@@ -11,15 +11,33 @@ public class GameController implements MouseListener {
     View view;
     InfoView infoView;
     int result = -1;
+    IAGomoku ia = null;
 
-    /** construit le listener du jeu sélectionné et gère son affichage
+    /** construit le controleur du jeu sélectionné pour la gestion de son affichage
     * @param model: Model
     * @param view : View
     * @param infoView : InfoView */
-    GameController(Model model, View view, InfoView infoView) {
+    public GameController(Model model, View view, InfoView infoView) {
     	this.model = model;
     	this.view = view;
     	this.infoView = infoView;
+        play();
+    }
+
+    /** construit le controleur et l'IA du jeu sélectionné pour la gestion de son affichage
+    * @param model: Model
+    * @param view : View
+    * @param infoView : InfoView
+    * @param ia IAGomoku */
+    public GameController(Model model, View view, InfoView infoView, IAGomoku ia) {
+        this.model = model;
+        this.view = view;
+        this.infoView = infoView;
+        this.ia = ia;
+        play();
+    }
+
+    public void play(){
     	view.addMouseListener(this);
         this.infoView.cancel.addMouseListener(new MouseListener(){
             public void mouseClicked(MouseEvent e) {
@@ -60,13 +78,13 @@ public class GameController implements MouseListener {
                 x = 0;
             if(e.getX() > 250 && e.getX() < 520)
                 x = 1;
-            if(e.getX() > 520 && e.getX() < 740)
+            if(e.getX() > 520 && e.getX() < 780)
                 x = 2;
-            if(e.getY() > 60 && e.getY() < 310)
+            if(e.getY() > 40 && e.getY() < 270)
                 y = 0;
-            if(e.getY() > 310 && e.getY() < 570)
+            if(e.getY() > 270 && e.getY() < 520)
                 y = 1;
-            if(e.getY() > 570 && e.getY() < 760)
+            if(e.getY() > 520 && e.getY() < 770)
                 y = 2;
         }
         System.out.println("x = " + x + " y = " + y);
@@ -81,6 +99,19 @@ public class GameController implements MouseListener {
                 this.infoView.update(model, null);
                 System.out.println("état de la partie = " + result);
                 System.out.println("nombre de pierres restantes : blanc = " + model.getSupport().getStonesWhite() + " noir = " + model.getSupport().getStonesBlack());
+                //tour de l'IA
+                if(this.ia != null){
+                    do{
+                        this.ia.playRandom(x, y);
+                    } while(!model.addStone(this.ia.getX(), this.ia.getY()));
+                    model.getSupport().incr();
+                    System.out.println(model.getSupport().toString());
+                    result = model.endGame();
+                    this.view.update(model, null);
+                    this.infoView.update(model, null);
+                    System.out.println("état de la partie = " + result);
+                    System.out.println("nombre de pierres restantes : blanc = " + model.getSupport().getStonesWhite() + " noir = " + model.getSupport().getStonesBlack());
+                }
             }
         }
     }

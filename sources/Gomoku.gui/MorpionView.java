@@ -28,20 +28,20 @@ public class MorpionView extends View {
         g.fillRect(0, 0, getWidth(), getHeight());
         Stone stone;
         g.setColor(Color.BLACK);
-        g.drawRect(20, 60, getWidth()-40, getHeight()-120);
-        g.drawLine(250, 60, 250, getHeight()-60);
-        g.drawLine(520, 60, 520, getHeight()-60);
-        g.drawLine(20, 310, getWidth()-20, 310);
-        g.drawLine(20, 570, getWidth()-20, 570);
+        g.drawRect(20, 40, getWidth()-40, getHeight()-80);
+        g.drawLine(250, 40, 250, getHeight()-40);
+        g.drawLine(520, 40, 520, getHeight()-40);
+        g.drawLine(20, 270, getWidth()-20, 270);
+        g.drawLine(20, 520, getWidth()-20, 520);
         for(int i = 0; i < super.model.getSupport().getWidth(); i++){
             for(int j = 0; j < super.model.getSupport().getHeight(); j++){
                 if(super.model.getSupport().getStone(i, j) == 1){
                     g.setColor(Color.BLACK);
-                    g.fillOval(250*i+40, 250*j+90, 190, 190);
+                    g.fillOval(250*i+40, 240*j+70, 190, 190);
                 }
                 else if(super.model.getSupport().getStone(i, j) == 2){
-                        g.setColor(Color.WHITE);
-                        g.fillOval(250*i+40, 250*j+90, 190, 190);
+                    g.setColor(Color.WHITE);
+                    g.fillOval(250*i+40, 240*j+70, 190, 190);
                 }
             }
         }
