@@ -21,7 +21,7 @@ public class GameController implements MouseListener {
     	this.model = model;
     	this.view = view;
     	this.infoView = infoView;
-        play();
+        view.addMouseListener(this);
     }
 
     /** construit le controleur et l'IA du jeu sélectionné pour la gestion de son affichage
@@ -34,25 +34,7 @@ public class GameController implements MouseListener {
         this.view = view;
         this.infoView = infoView;
         this.ia = ia;
-        play();
-    }
-
-    public void play(){
-    	view.addMouseListener(this);
-        this.infoView.cancel.addMouseListener(new MouseListener(){
-            public void mouseClicked(MouseEvent e) {
-                System.out.println("annulation du dernier coup");
-                model.setSupport(model.getLastVersion());
-                view.update(model, null);
-            }
-            public void mouseEntered(MouseEvent e){}
-    
-            public void mouseExited(MouseEvent e){}
-
-            public void mousePressed(MouseEvent e){}
-
-            public void mouseReleased(MouseEvent e){}   
-        });
+        view.addMouseListener(this);
     }
     
     public void mousePressed(MouseEvent e) {}
@@ -90,7 +72,6 @@ public class GameController implements MouseListener {
         System.out.println("x = " + x + " y = " + y);
         if(x != -1 && y != -1){
             if(result == -1){
-                model.setLastVersion(model.getSupport());
             	if(model.addStone(x, y))
                     model.getSupport().incr();
                 System.out.println(model.getSupport().toString());

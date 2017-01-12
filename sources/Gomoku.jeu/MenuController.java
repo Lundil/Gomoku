@@ -33,12 +33,12 @@ public class MenuController implements ActionListener {
         else if(st.equals("jouer contre l'IA")){
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    Model model = new Model(19, 19, 60, 5);
-                    GomokuView gomokuView = new GomokuView(model);
-                    InfoView infoView = new InfoView(model);
                     IAGomoku ia = new IAGomoku();
                     System.out.println("IA créée");
-                    GameController controller = new GameController(model, gomokuView, infoView, ia);
+                    ModelGomoku model = new ModelGomoku(19, 19, 60, 5);
+                    GomokuView view = new GomokuView(model);
+                    InfoView infoView = new InfoView(model);
+                    GameController controller = new GameController(model, view, infoView, ia);
                 }
             });
         }
