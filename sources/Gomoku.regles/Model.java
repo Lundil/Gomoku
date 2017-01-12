@@ -31,6 +31,11 @@ public class Model extends Observable {
         return true;
     }
 
+    public boolean addStone(int x){
+        return true;
+    }
+
+
     /** soustrait une pierre à la somme restante, retourne faux si la somme est à 0
     * @param black : boolean
     * @return boolean */

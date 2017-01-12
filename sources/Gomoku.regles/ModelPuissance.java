@@ -5,7 +5,7 @@ import Gomoku.gui.*;
 import java.util.Observer;
 import java.util.Observable;
 
-public class ModelGomoku extends Model {
+public class ModelPuissance extends Model {
     
     /** construit un modèle sur lequel se base les règles du jeu
     * il prend en compte les paramètres du plateau (cf Support)
@@ -14,8 +14,8 @@ public class ModelGomoku extends Model {
     * @param height : int
     * @param maxStones : int
     * @param numberAligned : int */
-    public ModelGomoku(int width, int heigth, int maxStones, int numberAligned){
-        super(width, heigth, maxStones, numberAligned);
+    public ModelPuissance(int width, int height, int maxStones, int numberAligned){
+        super(width, height, maxStones, numberAligned);
     }
 
     /** retourne un nombre pour savoir si le joueur noir a gagné (1),
@@ -33,6 +33,14 @@ public class ModelGomoku extends Model {
             return 0;
         //continuité du jeu
         return -1;
+    }
+
+    public boolean free(int x){
+        for(int i = support.getHeight(); i <= 0; i --){
+            if(super.support.getStone(x, i) == 0)
+                return true;
+        }
+        return false;
     }
 
     /** parcourt le plateau pour vérifier l'alignement pour chaque joueur dans chaque direction version Gomoku
@@ -155,50 +163,27 @@ public class ModelGomoku extends Model {
     * @param x : int
     * @param y : int
     * @return boolean */
-    public boolean addStone(int x, int y){
+    public boolean addStone(int x){
         //case déjà occupée
-        if(!super.free(x, y))
+        if(!free(x))
             return false;
         //au premier tour
         if(super.support.getNb() == 1){
-            super.support.setStone(x, y, false);
+            super.support.setStone(x, false);
             super.decrement(false);
             return true;
         }
-        //coordonnées de départ et d'arrivée pour la boucle imbriquée
-        int depX = x - 1;
-        int arrX = x + 1;
-        int depY = y - 1; 
-        int arrY = y +1;
-        
-        //bord gauche
-        if(x==0)
-            depX = x;
-        //bord droit
-        if(x== super.support.getWidth())
-            arrX = x;
-        //bord haut
-        if(y==0)
-            depY = y;
-        //bord bas
-        if(y== super.support.getHeight())
-            arrY = y;
-        //traitement
-    	for(int i = depX; i <= arrX; i ++){
-        	for(int j = depY; j <= arrY; j ++){
-                //case non occupée
-    			if(!super.free(i, j)){
-                    //place la pierre sur le plateau et supprime une pierre de son stock
-                    //tour du joueur noir
-                    if(super.support.getNb()% 2 == 0 && decrement(true))
-                        super.support.setStone(x, y, true);
-                    else if(super.support.getNb()% 2 != 0 && decrement(false))
-                    //tour du joueur blanc
-                        super.support.setStone(x, y, false);
-    	            return true;
-    			}
-    		}
-    	}
-    	return false;
+        //place la pierre sur le plateau et supprime une pierre de son stock
+        //tour du joueur noir
+        if(super.support.getNb()% 2 == 0 && decrement(true)){
+            super.support.setStone(x, true);
+            return true;
+        }
+        //tour du joueur blanc
+        else if(super.support.getNb()% 2 != 0 && decrement(false)){
+           super.support.setStone(x, false);
+    	   return true;
+        }
+        return false;
     }
 }

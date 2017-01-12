@@ -36,7 +36,7 @@ public class ModelMorpion extends Model {
     }
 
 
-    /** parcourt le plateau pour vérifier l'alignement pour chaque joueur version Morpion
+    /** parcourt le plateau pour vérifier l'alignement pour chaque joueur dans chaque direction version Morpion
     * @param black : boolean
     * @return boolean */
     public boolean alignedMorpion(boolean black){
@@ -108,6 +108,7 @@ public class ModelMorpion extends Model {
             super.decrement(false);
             return true;
         }
+        //place la pierre sur le plateau et supprime une pierre du stock
         //tour du joueur noir
         if(super.support.getNb()% 2 == 0 && super.decrement(true)){
             super.support.setStone(x, y, true);

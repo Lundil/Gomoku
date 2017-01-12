@@ -55,10 +55,10 @@ public class MenuController implements ActionListener {
         if(st.equals("Version Puissance 4")){
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    Model model = new Model(6, 6, 10, 4);
-                    GomokuView gomokuView = new GomokuView(model);
+                    ModelPuissance model = new ModelPuissance( 7, 6, 21, 4);
+                    PuissanceView morpionView = new PuissanceView(model);
                     InfoView infoView = new InfoView(model);
-                    GameController controller = new GameController(model, gomokuView, infoView);
+                    GameController controller = new GameController(model, morpionView, infoView);
                 }
             });
         }

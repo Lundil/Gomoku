@@ -91,7 +91,7 @@ public class Support {
     public void setStonesWhite(int i){
         this.stonesWhite = i;
     }
-    /* modifie le plateau
+    /* place une pierre sur le plateau
     * @param x : int
     * @param y : int
     * @param boolean : black
@@ -102,6 +102,25 @@ public class Support {
         else
             this.stones[x][y] = 2;
     }
+
+    /* place une pierre sur le plateau version Puissance 4
+    * @param x : int
+    * @param boolean : black
+    */
+    public void setStone(int x, boolean black){
+        int y = 0;
+        for(int i = 0; i < height; i ++){
+            if(this.stones[x][i] == 0){
+                y = i;
+                break;
+            }
+        }
+        if(black)
+           this.stones[x][y] = 1;
+        else
+            this.stones[x][y] = 2;
+    }
+
     /**
     * version texte du plateau
     * @return String
