@@ -34,7 +34,7 @@ public class PuissanceView extends View {
                 //sauf les bords moches
                 if(i != 0 || j != 0){
                     g.drawLine(108*i+20, 60, i*108+20, getHeight()-20);
-                    g.drawLine(20, 126*i+60, getWidth()-20, i*126+60);
+                    g.drawLine(20, 120*i+60, getWidth()-20, i*120+60);
                 }
             }
         }
@@ -43,11 +43,11 @@ public class PuissanceView extends View {
 
                 if(super.model.getSupport().getStone(i, j) == 1){
                     g.setColor(Color.BLACK);
-                    g.fillOval(40*i+1, 40*j+40, 38, 38);
+                    g.fillOval(108*i+27, 120*j+70, 60, 60);
                 }
                 else if(super.model.getSupport().getStone(i, j) == 2){
                         g.setColor(Color.WHITE);
-                        g.fillOval(40*i+1, 40*j+40, 38, 38);
+                        g.fillOval(108*i+27, 120*j+70, 60, 60);
                 }
             }
         }

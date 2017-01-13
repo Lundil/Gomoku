@@ -42,7 +42,7 @@ public class MenuController implements ActionListener {
                 }
             });
         }
-        else if(st.equals("Version Morpion")){
+        else if(st.equals("Morpion")){
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     ModelMorpion model = new ModelMorpion( 3, 3, 5, 3);
@@ -52,13 +52,13 @@ public class MenuController implements ActionListener {
                 }
             });
         }
-        if(st.equals("Version Puissance 4")){
+        if(st.equals("Puissance 4")){
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     ModelPuissance model = new ModelPuissance( 7, 6, 21, 4);
-                    PuissanceView morpionView = new PuissanceView(model);
+                    PuissanceView puissanceView = new PuissanceView(model);
                     InfoView infoView = new InfoView(model);
-                    GameController controller = new GameController(model, morpionView, infoView);
+                    GameController controller = new GameController(model, puissanceView, infoView);
                 }
             });
         }

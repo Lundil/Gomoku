@@ -36,7 +36,7 @@ public class ModelPuissance extends Model {
     }
 
     public boolean free(int x){
-        for(int i = support.getHeight(); i <= 0; i --){
+        for(int i = super.support.getHeight()-1; i >= 0; i --){
             if(super.support.getStone(x, i) == 0)
                 return true;
         }
@@ -55,23 +55,23 @@ public class ModelPuissance extends Model {
                         color = 1;
                     else
                         color = 2;
-                    if(this.areOnLineGomoku(color, x, y, Direction.LEFT))
+                    if(this.areOnLinePuissance(color, x, y, Direction.LEFT))
                         return true;
-                    else if(this.areOnLineGomoku(color, x, y, Direction.RIGHT))
+                    else if(this.areOnLinePuissance(color, x, y, Direction.RIGHT))
                         return true;
-                    else if(this.areOnLineGomoku(color, x, y, Direction.UP))
+                    else if(this.areOnLinePuissance(color, x, y, Direction.UP))
                         return true;
-                    else if(this.areOnLineGomoku(color, x, y, Direction.DOWN))
+                    else if(this.areOnLinePuissance(color, x, y, Direction.DOWN))
                         return true;
-                    else if(this.areOnDiagonalGomoku(color, x, y, Direction.RIGHTDOWN))
+                    else if(this.areOnDiagonalPuissance(color, x, y, Direction.RIGHTDOWN))
                         return true;
-                    else if(this.areOnDiagonalGomoku(color, x, y, Direction.RIGHTDOWN))
+                    else if(this.areOnDiagonalPuissance(color, x, y, Direction.RIGHTDOWN))
                         return true;
-                    else if(this.areOnDiagonalGomoku(color, x, y, Direction.LEFTDOWN))
+                    else if(this.areOnDiagonalPuissance(color, x, y, Direction.LEFTDOWN))
                         return true;
-                    else if(this.areOnDiagonalGomoku(color, x, y, Direction.RIGHTUP))
+                    else if(this.areOnDiagonalPuissance(color, x, y, Direction.RIGHTUP))
                         return true;
-                    else if(this.areOnDiagonalGomoku(color, x, y, Direction.LEFTUP))
+                    else if(this.areOnDiagonalPuissance(color, x, y, Direction.LEFTUP))
                         return true;
                 }
             }
@@ -86,7 +86,7 @@ public class ModelPuissance extends Model {
     * @param y : int
     * @param direction : Direction
     * @return boolean */
-	public boolean areOnLineGomoku(int color, int x, int y, Direction direction){
+	public boolean areOnLinePuissance(int color, int x, int y, Direction direction){
         int result = 0;
         for(int cpt = 0; cpt < super.numberAligned; cpt ++){
             if(direction == Direction.LEFT && x >= 4){
@@ -95,19 +95,19 @@ public class ModelPuissance extends Model {
                 else
                     result = 0;
             }
-            else if(direction == Direction.RIGHT && x <= 14){
+            else if(direction == Direction.RIGHT && x <= 2){
                 if(super.support.getStone(x + cpt, y) == color)
                     result ++;
                 else
                     result = 0;
             }
-            else if(direction == Direction.UP && y >= 4){
+            else if(direction == Direction.UP && y >= 3){
                 if(super.support.getStone(x, y - cpt) == color)
                     result ++;
                 else
                     result = 0;
             }
-            else if(direction == Direction.DOWN && y <= 14){
+            else if(direction == Direction.DOWN && y <= 2){
                 if(super.support.getStone(x, y + cpt) == color)
                     result ++;
                 else
@@ -115,7 +115,7 @@ public class ModelPuissance extends Model {
             }
         }
         System.out.println("nombre pierres alignées = " + result);
-        return result == 5;
+        return result == 4;
 	}
 
     /** vérifie un alignement de 5 pierres en diagonale sur le plateau en fonction 
@@ -125,28 +125,28 @@ public class ModelPuissance extends Model {
     * @param y : int
     * @param direction : Direction
     * @return boolean */
-    public boolean areOnDiagonalGomoku(int color, int x, int y, Direction direction){
+    public boolean areOnDiagonalPuissance(int color, int x, int y, Direction direction){
         int result = 0;
         for(int cpt = 0; cpt < super.numberAligned; cpt ++){
-            if(direction == Direction.LEFTUP && x >= 4 && y >= 4){
+            if(direction == Direction.LEFTUP && x >= 4 && y >= 3){
                 if(super.support.getStone(x - cpt, y - cpt) == color)
                     result ++;
                 else
                     result = 0;
             }
-            else if(direction == Direction.LEFTDOWN && x >= 4 && y <= 14){
+            else if(direction == Direction.LEFTDOWN && x >= 4 && y <= 2){
                 if(super.support.getStone(x - cpt, y + cpt) == color)
                     result ++;
                 else
                     result = 0;
             }
-            else if(direction == Direction.RIGHTUP && x <= 14 && y >= 4){
+            else if(direction == Direction.RIGHTUP && x <= 2 && y >= 3){
                 if(super.support.getStone(x + cpt, y - cpt) == color)
                     result ++;
                 else
                     result = 0;
             }
-            else if(direction == Direction.RIGHTDOWN && x <= 14 && y <= 14){
+            else if(direction == Direction.RIGHTDOWN && x <= 2 && y <= 2){
                 if(super.support.getStone(x + cpt, y + cpt) == color)
                     result ++;
                 else
@@ -154,7 +154,7 @@ public class ModelPuissance extends Model {
             }
         }
         System.out.println("nombre pierres alignées = " + result);
-        return result == 5;
+        return result == 4;
     }
 
     /** vérifie la possibilité d'ajouter une pierre au plateau

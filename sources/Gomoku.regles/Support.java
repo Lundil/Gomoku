@@ -65,7 +65,6 @@ public class Support {
     public int getStone(int x, int y){
         return this.stones[x][y];
     }
-
     /**
     * récupère la largeur du support
     * @return width

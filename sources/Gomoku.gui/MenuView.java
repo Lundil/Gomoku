@@ -16,8 +16,8 @@ public class MenuView  extends JFrame implements Observer {
     public MenuView() {
         this.gomoku = new JButton("2 joueurs");
         this.gomokuIA = new JButton("jouer contre l'IA");
-        this.morpion = new JButton("Version Morpion");
-        this.puissance = new JButton("Version Puissance 4");
+        this.morpion = new JButton("Morpion");
+        this.puissance = new JButton("Puissance 4");
 
         setLayout(null);
         setContentPane(new JLabel(new ImageIcon("../img/fond01.jpg")));

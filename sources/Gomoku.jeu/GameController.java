@@ -76,19 +76,19 @@ public class GameController implements MouseListener {
         else if(model.getNumberAligned() == 4){
             System.out.println("Puissance Controller");
             //Gestion précise des cellules saisies par l'utilisateur
-            if(e.getX() > 20 && e.getX() < 115)
+            if(e.getX() > 20 && e.getX() < 128)
                 x = 0;
-            if(e.getX() > 115 && e.getX() < 205)
+            if(e.getX() > 128 && e.getX() < 236)
                 x = 1;
-            if(e.getX() > 205 && e.getX() < 300)
+            if(e.getX() > 236 && e.getX() < 344)
                 x = 2;
-            if(e.getX() > 300 && e.getX() < 395)
+            if(e.getX() > 344 && e.getX() < 452)
                 x = 3;
-            if(e.getX() > 395 && e.getX() < 490)
+            if(e.getX() > 452 && e.getX() < 560)
                 x = 4;
-            if(e.getX() > 490 && e.getX() < 585)
+            if(e.getX() > 560 && e.getX() < 668)
                 x = 5;
-            if(e.getX() > 585 && e.getX() < 680)
+            if(e.getX() > 668 && e.getX() < 776)
                 x = 6;
         }
 
