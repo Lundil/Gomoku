@@ -11,8 +11,7 @@ import javax.swing.SwingUtilities;
 public class MenuController implements ActionListener { 
     MenuView view;
 
-
-    /** construit le listener du menu principal
+    /** construit le listener du menu principal, gère la sélection des boutons
     * @param view : MenuView */
     MenuController(MenuView view) {
     	this.view = view;

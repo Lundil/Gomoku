@@ -23,7 +23,7 @@ public class View extends JFrame implements Observer {
 		this.model = model;
 		model.addObserver(this);
 		//Basics
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
         setBounds(600, 300, 800, 800);
 		setVisible(true);

@@ -139,7 +139,6 @@ public class GameController implements MouseListener {
         do{
             this.ia.playRandom(x, y);
         } while(!model.addStone(this.ia.getX(), this.ia.getY()));
-
         model.getSupport().incr();
         System.out.println(model.getSupport().toString());
         result = model.endGame();

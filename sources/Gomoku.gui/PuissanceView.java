@@ -43,11 +43,11 @@ public class PuissanceView extends View {
 
                 if(super.model.getSupport().getStone(i, j) == 1){
                     g.setColor(Color.BLACK);
-                    g.fillOval(108*i+27, 120*j+70, 60, 60);
+                    g.fillOval(108*i+35, (getHeight())-(120*j-1)-120, 70, 70);
                 }
                 else if(super.model.getSupport().getStone(i, j) == 2){
                         g.setColor(Color.WHITE);
-                        g.fillOval(108*i+27, 120*j+70, 60, 60);
+                        g.fillOval(108*i+35, (getHeight())-(120*j-1)-120, 70, 70);
                 }
             }
         }

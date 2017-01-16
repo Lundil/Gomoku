@@ -10,22 +10,15 @@ import java.util.Observable;
 import java.io.*;
 
 
-public class InfoView  extends JFrame implements Observer {
-    Model model;
+public class InfoView  extends View {
+
     private Image image = null;
-    public JButton cancel;
 
     public InfoView(Model model) {
-		this.model = model;
-		model.addObserver(this);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
-        setResizable(false);
-        setBounds(100, 100, 533, 300);
-		setTitle("Informations sur Gomoku");
-		setVisible(true);
-        this.cancel = new JButton("annuler le coup");
-        cancel.setBounds( 40, 30, 160, 50);
+        super(model);
+        super.setBounds(100, 100, 533, 300);
+        super.setTitle("Informations sur Gomoku");
+
     }
 
     /** mets à jour l'affichage en fonction du modèle donné
