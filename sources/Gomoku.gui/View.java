@@ -17,27 +17,23 @@ public class View extends JFrame implements Observer {
     Model model;
     private Image image = null;
 
-    /** consturit la vue originale du jeu quelque soit sa version selon le modèle
+    /** construit la vue originale du jeu quelque soit sa version selon le modèle
     * @param model : Model */
     public View(Model model) {
 		this.model = model;
 		model.addObserver(this);
-		//Basics
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
         setBounds(600, 300, 800, 800);
 		setVisible(true);
     }
 
-    /** mets à jour l'affichage en fonction du modèle donné
+    /** met à jour l'affichage en fonction du modèle donné
     * @param o : Observable
-    * @param arg : Object
-    */
+    * @param arg : Object */
     public void update(Observable o, Object arg) {
 		this.repaint();
     }
-
-
     public void addController(GameController controller){
     }
 }

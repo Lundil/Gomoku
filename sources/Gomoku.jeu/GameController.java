@@ -1,7 +1,6 @@
 package Gomoku.jeu;
 import Gomoku.gui.*;
 import Gomoku.regles.*;
-
 import java.util.Observer;
 import java.util.Observable;
 import java.awt.event.*;
@@ -48,17 +47,15 @@ public class GameController implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         int x = -1;
         int y = -1;
-        //s'il s'agit du Gomoku
+        //gestion de la saisie des coordonnées pour le Gomoku
         if(model.getNumberAligned() == 5){
             System.out.println("Gomoku Controller");
-            //Gestion précise des cellules saisies par l'utilisateur
         	x = (e.getX()-10)/40;
         	y = (e.getY()-50)/40;
         }
-        //s'il s'agit du Morpion
+        //gestion de la saisie des coordonnées pour le Morpion
         else if(model.getNumberAligned() == 3){
             System.out.println("Morpion Controller");
-            //Gestion précise des cellules saisies par l'utilisateur
             if(e.getX() > 20 && e.getX() < 250)
                 x = 0;
             if(e.getX() > 250 && e.getX() < 520)
@@ -72,10 +69,9 @@ public class GameController implements MouseListener {
             if(e.getY() > 520 && e.getY() < 770)
                 y = 2;
         }
-        //s'il s'agit du Puissance 4
+        //gestion de la saisie des coordonnées pour le Puissance 4
         else if(model.getNumberAligned() == 4){
             System.out.println("Puissance Controller");
-            //Gestion précise des cellules saisies par l'utilisateur
             if(e.getX() > 20 && e.getX() < 128)
                 x = 0;
             if(e.getX() > 128 && e.getX() < 236)
@@ -106,7 +102,6 @@ public class GameController implements MouseListener {
                puissanceTour(x);
         }
     }
-
 
     public void gomokuTour(int x, int y){
         if(result == -1){
