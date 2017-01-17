@@ -21,7 +21,9 @@ public class IAGomoku{
 	* @param lastPlayerY int */
 	public void playRandom(int lastPlayerX, int lastPlayerY){
 		Random r = new Random();
-		if(r.nextBoolean())
+		this.x = r.nextInt(18);
+		this.y = r.nextInt(18);
+		/*if(r.nextBoolean())
 			this.x = lastPlayerX - 1;
 		else
 			this.x = lastPlayerX + 1;
@@ -34,7 +36,7 @@ public class IAGomoku{
 			this.x = r.nextInt(19);
 		if(this.y < 0 || this.y > 18)
 			this.y = r.nextInt(19);
-		System.out.println("coup porté par l'IA : x = " + x + " y = " + y);
+		System.out.println("coup porté par l'IA : x = " + x + " y = " + y);*/
 	}
 
     /** récupère la coordonnée x du coup aléatoire de l'IA

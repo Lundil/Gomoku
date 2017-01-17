@@ -95,18 +95,23 @@ public class GameController implements MouseListener {
         System.out.println("x = " + x + " y = " + y);
         //si la saisie a été prise en compte
         //et qu'il s'agit du Gomoku ou du Morpion
-        if(x != -1 && y != -1 && model.getNumberAligned() != 4)
-            gomokuTour(x, y);
+        if(x != -1 && y != -1 && model.getNumberAligned() != 4){
+            if(model.addStone(x, y))
+                gomokuTour(x, y);
+        }
         //si la saisie a été prise en compte
         //et qu'il s'agit du Puissance 4
-        else if(x != -1 && model.getNumberAligned() == 4)
-            puissanceTour(x);
+        else if(x != -1 && model.getNumberAligned() == 4){
+            if(model.addStone(x))
+               puissanceTour(x);
+        }
     }
 
 
     public void gomokuTour(int x, int y){
         if(result == -1){
-            if(model.addStone(x, y))
+            //bug
+            //if(model.addStone(x, y))
                 model.getSupport().incr();
             System.out.println(model.getSupport().toString());
             result = model.endGame();
@@ -123,7 +128,7 @@ public class GameController implements MouseListener {
 
     public void puissanceTour(int x){
         if(result == -1){
-            if(model.addStone(x))
+            //if(model.addStone(x))
                 model.getSupport().incr();
             System.out.println(model.getSupport().toString());
             result = model.endGame();
