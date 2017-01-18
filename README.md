@@ -5,7 +5,7 @@ Réalisé par Xavier Lamarque et Aurélia Catrice
 
 - Décompressez l'archive
 
-- Pour lancer le jeu, cliquez sur Gomoku.jar
+- Pour lancer le jeu, cliquez sur gomoku.jar
 
 ----------------------------Vérifications préalables----------------------------
 
@@ -31,6 +31,9 @@ Réalisé par Xavier Lamarque et Aurélia Catrice
 
 
 ----------------------------Génération du .jar----------------------------
+
+- Vérifier la présence du fichier : manifest.mf
+- Exécuter la commande : jar cvmf manifest.mf gomoku.jar
 
 ----------------------------Description des classes----------------------------
 
