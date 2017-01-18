@@ -13,7 +13,7 @@ import java.awt.Image;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
-public class View extends JFrame implements Observer {
+public class View extends JFrame {
     Model model;
     private Image image = null;
 
@@ -21,19 +21,20 @@ public class View extends JFrame implements Observer {
     * @param model : Model */
     public View(Model model) {
 		this.model = model;
-		model.addObserver(this);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
         setBounds(600, 300, 800, 800);
 		setVisible(true);
     }
 
-    /** met à jour l'affichage en fonction du modèle donné
-    * @param o : Observable
-    * @param arg : Object */
-    public void update(Observable o, Object arg) {
+    /** met à jour l'affichage en fonction du modèle donné*/
+    public void update() {
 		this.repaint();
     }
-    public void addController(GameController controller){
+
+    /** lie un controller (ici un mouse listener) à la vue
+    * @param controller : MouseListener */
+    public void addController(MouseListener controller){
+        this.addMouseListener(controller);
     }
 }

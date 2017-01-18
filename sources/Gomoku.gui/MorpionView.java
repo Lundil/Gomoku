@@ -15,11 +15,14 @@ import java.io.IOException;
 
 public class MorpionView extends View {
 
+    /* construit la vue correspondant au jeu version Morpion
+    * param model : Model */
     public MorpionView(Model model) {
         super(model);
     }
 
-    /** Affiche la vue du plateau de jeu à chaque saisie du joueur
+    /** Affiche la vue du plateau de jeu en fonction du modèle
+    * qui s'actualise à chaque saisie du joueur
     * @param g : Graphics
     */
     public void paint(Graphics g) {

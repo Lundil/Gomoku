@@ -14,6 +14,9 @@ public class InfoView  extends View {
 
     private Image image = null;
 
+    /** construit la vue correspondant à la fenêtre d'information du jeu
+    * en fonction du modèle qui s'actualise à chaque tour
+    * @param model : Model */
     public InfoView(Model model) {
         super(model);
         super.setBounds(100, 100, 533, 300);
@@ -21,19 +24,8 @@ public class InfoView  extends View {
 
     }
 
-    /** mets à jour l'affichage en fonction du modèle donné
-    * @param o : Observable
-    * @param arg : Object
-    */
-    public void update(Observable o, Object arg) {
-		this.repaint();
-    }
-
-    public void addController(GameController controller){
-    }
-
-
-    /** Affiche la vue du plateau de jeu à chaque saisie du joueur
+    /** Affiche la vue du plateau de jeu en fonction du modèle
+    * qui s'actualise à chaque saisie du joueur
     * @param g : Graphics
     */
     public void paint(Graphics g) {

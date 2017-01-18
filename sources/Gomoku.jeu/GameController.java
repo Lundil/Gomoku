@@ -20,7 +20,7 @@ public class GameController implements MouseListener {
     	this.model = model;
     	this.view = view;
     	this.infoView = infoView;
-        view.addMouseListener(this);
+        view.addController(this);
     }
 
     /** construit le controleur et l'IA du jeu sélectionné pour la gestion de son affichage
@@ -33,7 +33,7 @@ public class GameController implements MouseListener {
         this.view = view;
         this.infoView = infoView;
         this.ia = ia;
-        view.addMouseListener(this);
+        view.addController(this);
     }
     
     public void mousePressed(MouseEvent e) {}
@@ -44,6 +44,8 @@ public class GameController implements MouseListener {
 
     public void mouseExited(MouseEvent e) {}
 
+    /** gère la saisie du joueur sur le plateau de jeu
+    * @param e : MouseEvent */
     public void mouseClicked(MouseEvent e) {
         int x = -1;
         int y = -1;
@@ -103,15 +105,19 @@ public class GameController implements MouseListener {
         }
     }
 
+    /** fait appel aux méthodes permettant l'actualisation
+    * du modèle et de la vue en fonction
+    * des coordonnées saisies par le joueur
+    * version Gomoku et Morpion
+    * @param x : int
+    * @param y : int */
     public void gomokuTour(int x, int y){
         if(result == -1){
-            //bug
-            //if(model.addStone(x, y))
                 model.getSupport().incr();
             System.out.println(model.getSupport().toString());
             result = model.endGame();
-            this.view.update(model, null);
-            this.infoView.update(model, null);
+            this.view.update();
+            this.infoView.update();
             System.out.println("état de la partie = " + result);
             System.out.println("nombre de pierres restantes : blanc = " + model.getSupport().getStonesWhite() + " noir = " + model.getSupport().getStonesBlack());
             //tour de l'IA si elle existe
@@ -121,19 +127,29 @@ public class GameController implements MouseListener {
         }
     }
 
+    /** fait appel aux méthodes permettant l'actualisation
+    * du modèle et de la vue en fonction
+    * des coordonnées saisies par le joueur
+    * version Puissance 4
+    * @param x : int */
     public void puissanceTour(int x){
         if(result == -1){
-            //if(model.addStone(x))
                 model.getSupport().incr();
             System.out.println(model.getSupport().toString());
             result = model.endGame();
-            this.view.update(model, null);
-            this.infoView.update(model, null);
+            this.view.update();
+            this.infoView.update();
             System.out.println("état de la partie = " + result);
             System.out.println("nombre de pierres restantes : blanc = " + model.getSupport().getStonesWhite() + " noir = " + model.getSupport().getStonesBlack());
         }
     }
 
+    /** fait appel aux méthodes permettant l'actualisation
+    * du modèle et de la vue en fonction du comportement de l'IA
+    * et des coordonnées saisies par le joueur
+    * version Gomoku et Morpion
+    * @param x : int
+    * @param y : int */
     public void iaTour(int x, int y){
         //tant que le coup ne convient pas au plateau, génère des coordonnées aléatoires
         do{
@@ -142,8 +158,8 @@ public class GameController implements MouseListener {
         model.getSupport().incr();
         System.out.println(model.getSupport().toString());
         result = model.endGame();
-        this.view.update(model, null);
-        this.infoView.update(model, null);
+        this.view.update();
+        this.infoView.update();
         System.out.println("état de la partie = " + result);
         System.out.println("nombre de pierres restantes : blanc = " + model.getSupport().getStonesWhite() + " noir = " + model.getSupport().getStonesBlack());
     }

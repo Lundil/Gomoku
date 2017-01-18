@@ -60,6 +60,8 @@ public class Support {
     }
     /**
     * récupère la pierre de la celulle
+    * @param x : int
+    * @param y :int
     * @return stone
     */
     public int getStone(int x, int y){

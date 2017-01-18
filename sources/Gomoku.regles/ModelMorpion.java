@@ -14,8 +14,8 @@ public class ModelMorpion extends Model {
     * @param height : int
     * @param maxStones : int
     * @param numberAligned : int */
-    public ModelMorpion(int width, int heigth, int maxStones, int numberAligned){
-        super(width, heigth, maxStones, numberAligned);
+    public ModelMorpion(int width, int height, int maxStones, int numberAligned){
+        super(width, height, maxStones, numberAligned);
     }
 
     /** retourne un nombre pour savoir si le joueur noir a gagné (1),
@@ -55,9 +55,6 @@ public class ModelMorpion extends Model {
     /** vérifie un alignement de 5 pierres en ligne sur le plateau en fonction 
     * d' une direction (gauche, droite, haut, bas) et de la position de la pierre version Morpion
     * @param color : int
-    * @param x : int
-    * @param y : int
-    * @param direction : Direction
     * @return boolean */
     public boolean areOnLineMorpion(int color){
         if(super.support.getStone(0, 0) == super.support.getStone(0, 1) && super.support.getStone(0, 1) == super.support.getStone(0, 2) && super.support.getStone(0, 2) == color)
@@ -78,9 +75,6 @@ public class ModelMorpion extends Model {
     /** vérifie un alignement de 5 pierres en diagonale sur le plateau en fonction 
     * d' une direction (gauche, droite, haut, bas) et de la position de la pierre version Morpion
     * @param color : int
-    * @param x : int
-    * @param y : int
-    * @param direction : Direction
     * @return boolean */
     public boolean areOnDiagonalMorpion(int color){
         if(super.support.getStone(1, 1) == color){

@@ -14,8 +14,8 @@ public class ModelGomoku extends Model {
     * @param height : int
     * @param maxStones : int
     * @param numberAligned : int */
-    public ModelGomoku(int width, int heigth, int maxStones, int numberAligned){
-        super(width, heigth, maxStones, numberAligned);
+    public ModelGomoku(int width, int height, int maxStones, int numberAligned){
+        super(width, height, maxStones, numberAligned);
     }
 
     /** retourne un nombre pour savoir si le joueur noir a gagné (1),

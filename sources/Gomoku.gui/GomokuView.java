@@ -15,13 +15,15 @@ import java.io.IOException;
 
 public class GomokuView extends View {
 
+    /** construit la vue correspondant au plateau de jeu en fonction du modèle
+    * qui s'actualise à chaque saisie du joueur
+    * @param model : Model */
     public GomokuView(Model model) {
         super(model);
     }
 
     /** Affiche la vue du plateau de jeu à chaque saisie du joueur
-    * @param g : Graphics
-    */
+    * @param g : Graphics */
     public void paint(Graphics g) {
 
         g.setColor(new Color(255, 163, 102));

@@ -10,9 +10,10 @@ import java.util.Observable;
 import java.io.*;
 
 
-public class MenuView  extends JFrame implements Observer {
+public class MenuView  extends JFrame {
     private JButton gomoku, gomokuIA, morpion, puissance;
 
+    /* construit la vue correspondant au menu principal appelé au lancement du jeu*/
     public MenuView() {
         this.gomoku = new JButton("2 joueurs");
         this.gomokuIA = new JButton("jouer contre l'IA");
@@ -22,10 +23,10 @@ public class MenuView  extends JFrame implements Observer {
         setLayout(null);
         setContentPane(new JLabel(new ImageIcon("../img/fond01.jpg")));
 
-        gomoku.setBounds(130, 50, 160, 30);
-        gomokuIA.setBounds(130, 110, 160, 30);
-        morpion.setBounds(130, 170, 160, 30);
-        puissance.setBounds(130, 230, 160, 30);
+        gomoku.setBounds(100, 50, 200, 30);
+        gomokuIA.setBounds(100, 110, 200, 30);
+        morpion.setBounds(100, 170, 200, 30);
+        puissance.setBounds(100, 230, 200, 30);
         
         setBounds(500, 300, 533, 300);
 
@@ -39,11 +40,8 @@ public class MenuView  extends JFrame implements Observer {
 		setVisible(true);
     }
 
-    public void update(Observable o, Object arg) {
-		this.repaint();
-    }
-
-
+    /** relie la vue à un controller (ici MenuController, implémentant un action listener)
+    * @param controller : MenuController */
     public void addController(MenuController controller){
         gomoku.addActionListener(controller);
         gomokuIA.addActionListener(controller);

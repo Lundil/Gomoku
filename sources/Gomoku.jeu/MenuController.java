@@ -17,6 +17,8 @@ public class MenuController implements ActionListener {
     	this.view = view;
     }
 
+    /** fonction permettant la sélection du jeu par le joueur
+    * @param e : ActionEvent */
     public void actionPerformed(ActionEvent e) {
         String st = ((JButton) e.getSource()).getText();
         if(st.equals("2 joueurs")){

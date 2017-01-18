@@ -15,13 +15,15 @@ import java.io.IOException;
 
 public class PuissanceView extends View {
 
+    /* construit la vue correspondant au jeu version Puissance 4
+    * param model : Model */
     public PuissanceView(Model model) {
         super(model);
     }
 
-    /** Affiche la vue du plateau de jeu à chaque saisie du joueur
-    * @param g : Graphics
-    */
+    /** Affiche la vue du plateau de jeu en fonction du modèle
+    * qui s'actualise à chaque saisie du joueur
+    * @param g : Graphics */
     public void paint(Graphics g) {
         g.setColor(new Color(255, 163, 102));
         g.fillRect(0, 0, getWidth(), getHeight());

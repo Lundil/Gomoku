@@ -5,7 +5,7 @@ import Gomoku.gui.*;
 import java.util.Observer;
 import java.util.Observable;
 
-public class Model extends Observable {
+public class Model {
     protected Support support;
     protected Support lastVersion;
     protected int numberAligned;
@@ -17,8 +17,8 @@ public class Model extends Observable {
     * @param height : int
     * @param maxStones : int
     * @param numberAligned : int */
-    public Model(int width, int heigth, int maxStones, int numberAligned){
-        this.support = new Support(width, heigth, maxStones);
+    public Model(int width, int height, int maxStones, int numberAligned){
+        this.support = new Support(width, height, maxStones);
         this.lastVersion = this.support;
         this.numberAligned = numberAligned;
     }
@@ -34,7 +34,6 @@ public class Model extends Observable {
     public boolean addStone(int x){
         return true;
     }
-
 
     /** soustrait une pierre à la somme restante, retourne faux si la somme est à 0
     * @param black : boolean
@@ -100,4 +99,6 @@ public class Model extends Observable {
     public void setSupport(Support support){
         this.support = support;
     }
+
+    
 }

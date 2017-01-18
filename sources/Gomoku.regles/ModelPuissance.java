@@ -161,7 +161,6 @@ public class ModelPuissance extends Model {
     * selon s'il y a des pierres à proximité
     * et le nombre de pierres restant au joueur
     * @param x : int
-    * @param y : int
     * @return boolean */
     public boolean addStone(int x){
         //case déjà occupée
