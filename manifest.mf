@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: classes/Gomoku.jeu.RunMVC
-Class-Path: classes/Gomoku.jeu/*.class classes/Gomoku.gui/*.class classes/Gomoku.regles/*.class
